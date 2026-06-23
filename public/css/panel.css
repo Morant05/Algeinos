@@ -1,0 +1,222 @@
+/* Colores de la Web */
+:root {
+    --principal: #a71136;
+    --secudario: #666;
+}
+
+.topbar .mailbox, .topbar .user-dd {
+    width: 350px;
+}
+
+.page-wrapper > .container-fluid,
+.page-wrapper > .container-lg,
+.page-wrapper > .container-md,
+.page-wrapper > .container-sm,
+.page-wrapper > .container-xl,
+.page-wrapper > .container-xxl {
+    padding: 20px 30px;
+    min-height: calc(100vh - 219px);
+}
+
+/* Formulario de Login y recuperacion */
+#loginform .logo img,
+#recoverform .logo img {
+    width: 100%;
+}
+
+/* Cabecera panel */
+span.logo-text img.light-logo {
+    width: 85%;
+    margin-left: 10px;
+}
+
+b.logo-icon img.light-logo {
+    width: 100%;
+}
+
+i.ti-menu {
+    color: var(--principal);
+}
+
+.d-flex.no-block.align-items-center.p-3.bg-info.text-white.mb-2 {
+    background-color: var(--principal) !important;
+}
+
+a.btn.d-block.w-100.btn-info.rounded-pill {
+    background-color: var(--principal);
+    border-color: var(--principal);
+}
+
+a.btn.d-block.w-100.btn-info.rounded-pill:hover {
+    background-color: var(--secudario);
+    border-color: var(--secudario);
+}
+
+/* Titulo y migas de pan */
+.page-titles .text-themecolor {
+    color: var(--principal);
+}
+
+/* Sidebar */
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item .sidebar-link {
+    font-size: 12px;
+}
+
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav ul .sidebar-item.selected > .sidebar-link,
+#main-wrapper[data-layout=horizontal] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav>ul>.sidebar-item>.sidebar-link.active,
+#main-wrapper[data-layout=vertical] .left-sidebar[data-sidebarbg=skin6] .sidebar-nav>ul>.sidebar-item>.sidebar-link.active {
+    background-color: var(--principal);
+    font-size: 12px;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+    font-size: 18px;
+    margin-right: 15px;
+    width: 15px;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link .hide-menu {
+    overflow: visible;
+}
+
+.user-profile .profile-text>a {
+    padding: 6px 10px;
+}
+
+.user-profile .profile-text>a:hover {
+    transition: 0.3s ease-in-out;
+    background: #202020;
+}
+
+.home-card {
+    color: #fff;
+}
+
+.counter {
+    color: #fff;
+}
+
+.card-home-counter {
+    text-align: right;
+}
+
+.bg-c-blue {
+    background: linear-gradient(45deg, #4099ff, #73b4ff);
+}
+
+.bg-c-green {
+    background: linear-gradient(45deg, #2ed8b6, #59e0c5);
+}
+
+.bg-c-yellow {
+    background: linear-gradient(45deg, #ffb64d, #ffcb80);
+}
+
+.bg-c-pink {
+    background: linear-gradient(45deg, #ff5370, #ff869a);
+}
+
+.card {
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+    border: none;
+    margin-bottom: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+    padding: 25px;
+}
+
+.home-card i {
+    font-size: 26px;
+}
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+
+.my-leaflet-map-container img {
+    max-height: none;
+}
+
+.date-table{
+    font-size: 14px;
+}
+
+.order-table{
+    font-size: 10px;
+}
+
+
+.copy-text {
+	position: relative;
+	padding: 5px;
+	background: #fff;
+	border: 0.5px solid #ddd;
+	border-radius: 5px;
+	display: flex;
+}
+.copy-text input.text {
+	padding: 5px;
+	font-size: 12px;
+	color: #555;
+	border: none;
+	outline: none;
+}
+.copy-text button {
+	padding: 5px;
+	background: #5784f5;
+	color: #fff;
+	font-size: 12px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.copy-text button:active {
+	background: #809ce2;
+}
+.copy-text button:before {
+	content: "Copiado";
+	position: absolute;
+	top: -22px;
+	right: 0px;
+	background: #5c81dc;
+	padding: 4px 5px;
+	border-radius: 10px;
+	font-size: 12px;
+	display: none;
+}
+.copy-text button:after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	right: 12.5px;
+	width: 5px;
+	height: 5px;
+	background: #5c81dc;
+	transform: rotate(45deg);
+	display: none;
+}
+.copy-text.active button:before,
+.copy-text.active button:after {
+	display: block;
+}
+
+.text-principal{
+    color: var(--principal);
+}
+
+.border-bottom-principal{
+    border-bottom: 1px solid var(--principal);
+}

@@ -1,0 +1,1100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Market Leon",
+        "description": "Apis",
+        "contact": {
+            "name": "Carlos Alberto Orozco Albiter",
+            "email": "carlos.orozco@proconsi.es"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://ec2-3-23-104-186.us-east-2.compute.amazonaws.com/",
+            "description": "Servidor Api"
+        }
+    ],
+    "paths": {
+        "/api/1.0.0/login": {
+            "post": {
+                "tags": [
+                    "Autenticacion"
+                ],
+                "summary": "Ingresar al sistema",
+                "description": "Ingresar",
+                "operationId": "bcfca5a4ce99ef122a6badab5f5d4d0e",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "Email del repartidor",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Password del repartidor",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ingreso con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Se genero un error al ingresar"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/recuperarpassword": {
+            "post": {
+                "tags": [
+                    "Autenticacion"
+                ],
+                "summary": "Recuperar password de repartidor",
+                "description": "Recuperar password",
+                "operationId": "forgotpassword",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "Email registrado",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Exito al recuperar password"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro el repartidor"
+                    },
+                    "500": {
+                        "description": "Error al recuperar password"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/refrescartoken": {
+            "post": {
+                "tags": [
+                    "Autenticacion"
+                ],
+                "summary": "Refrescar token",
+                "description": "Refrescar token",
+                "operationId": "refreshtoken",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "token"
+                                ],
+                                "properties": {
+                                    "token": {
+                                        "description": "Token",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Exito al cambiar password"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al actualizar password"
+                    }
+                }
+            }
+        },
+        "/api/1.0.0/cerrarsesion": {
+            "post": {
+                "tags": [
+                    "Autenticacion"
+                ],
+                "summary": "Cerrar Sesion",
+                "description": "Cerrar Sesion",
+                "operationId": "cerrarsesion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "dispositivo_id,token"
+                                ],
+                                "properties": {
+                                    "dispositivo_id": {
+                                        "description": "Id del dispositivo",
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "description": "Token de acceso",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Exito al cerrar sesion"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al cerrar sesion"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/expediciones": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Crear nueva expedicion",
+                "description": "Crear nueva expedicion",
+                "operationId": "storeexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "matricula",
+                                    "rango_entrega"
+                                ],
+                                "properties": {
+                                    "matricula": {
+                                        "description": "Matricula del vehiculo",
+                                        "type": "string"
+                                    },
+                                    "rango_entrega": {
+                                        "description": "(0:Mañana / 1:Tarde)",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pedido con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al crear pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/estadorepartidor": {
+            "get": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Se obtiene el estado del repartidor",
+                "description": "Obtiene el estado del repartidor",
+                "operationId": "showexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvo el estado del repartidor con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro el repartdor"
+                    },
+                    "500": {
+                        "description": "Error al obtener estado del repartidor"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/eliminarexpedicion": {
+            "delete": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Eliminar expedicion",
+                "description": "Eliminar expedicion",
+                "operationId": "destroyexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se elimino expedicion con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro la expedicion"
+                    },
+                    "500": {
+                        "description": "Error al eliminar expedicion"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/asociarid": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Asociar bulto de un pedido a expedicion por codigo qr ",
+                "description": "Asociar bulto de un pedido a expedicion por codigo qr",
+                "operationId": "asociarpedidoexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "pedidos_id",
+                                    "bultos_id"
+                                ],
+                                "properties": {
+                                    "pedidos_id": {
+                                        "description": "Identificador de pedido",
+                                        "type": "integer"
+                                    },
+                                    "bultos_id": {
+                                        "description": "Identificador de bulto",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pedido asociado con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro el recurso solicitado"
+                    },
+                    "500": {
+                        "description": "Error al asociar pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/desasociarid": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Desasociar  un pedido de una expedicion por codigo qr",
+                "description": "Desasociar un pedido de una expedicion por codigo qr ",
+                "operationId": "desasociarpedidoexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "pedidos_id"
+                                ],
+                                "properties": {
+                                    "pedidos_id": {
+                                        "description": "Identificador de pedido",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pedido desasociado con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al desasociar pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/confirmacion": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Confirmacion de expedicion",
+                "description": "Confirmacion de expedicion",
+                "operationId": "confirmacionexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se confirmo la expedicion con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro la expedicion"
+                    },
+                    "500": {
+                        "description": "Error al confirmar la expedicion"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/expediciones/entrega": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": " Entrega/Recogida Pedido",
+                "description": " Entrega/Recogida Pedido",
+                "operationId": "entregarecogidapedido",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "pedidos_id",
+                                    "fecha",
+                                    "resultado"
+                                ],
+                                "properties": {
+                                    "pedidos_id": {
+                                        "description": "Identificador del pedido",
+                                        "type": "integer"
+                                    },
+                                    "fecha": {
+                                        "description": "Formato aaaa/mm/dd HH:mm:ss en UTC",
+                                        "type": "string"
+                                    },
+                                    "resultado": {
+                                        "description": "entregado/recogido (1:Si / 2:No)",
+                                        "type": "integer"
+                                    },
+                                    "dni": {
+                                        "description": "En caso de entregado/recogido(1:Si), el dni de la persona",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pedido con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al crear pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/finalizacion": {
+            "post": {
+                "tags": [
+                    "Expediciones"
+                ],
+                "summary": "Finalizacion de expedicion",
+                "description": "Finalizacion de expedicion",
+                "operationId": "finalizacionexpedicion",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se finalizo la expedicion con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro la expedicion"
+                    },
+                    "500": {
+                        "description": "Error al finalizar la expedicion"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/pedidos": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Obtiene todas los pedidos",
+                "description": "Obtiene atributos de todos los pedidos",
+                "operationId": "indexpedidos",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Numero de registros por pagina",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Orden de registros por atributos",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Omite registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limita registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "buscador",
+                        "in": "query",
+                        "description": "Obtiene pedido por numero",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvieron los pedidos con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al obtener los pedidos"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Crear nuevo pedido",
+                "description": "Crear nuevo pedido",
+                "operationId": "storepedido",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Formato de datos",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "fecha",
+                                    "nombre",
+                                    "direccion",
+                                    "localidad",
+                                    "telefono",
+                                    "rango_entrega",
+                                    "tipo_transporte",
+                                    "productos",
+                                    "prestashop_id"
+                                ],
+                                "properties": {
+                                    "fecha": {
+                                        "description": "Formato aaaa/mm/dd HH:mm:ss en UTC",
+                                        "type": "string"
+                                    },
+                                    "nombre": {
+                                        "description": "Nombre del destinatario",
+                                        "type": "string"
+                                    },
+                                    "direccion": {
+                                        "description": "Direccion del destinatario",
+                                        "type": "string"
+                                    },
+                                    "localidad": {
+                                        "description": "Localidad del destinatario",
+                                        "type": "string"
+                                    },
+                                    "telefono": {
+                                        "description": "Telefono de contacto del destinatario",
+                                        "type": "string"
+                                    },
+                                    "rango_entrega": {
+                                        "description": "(0:Mañana / 1:Tarde)",
+                                        "type": "integer"
+                                    },
+                                    "tipo_transporte": {
+                                        "description": "(1:Ultima milla / 2:Media milla)",
+                                        "type": "integer"
+                                    },
+                                    "productos": {
+                                        "description": "Array de productos",
+                                        "type": "string"
+                                    },
+                                    "prestashop_id": {
+                                        "description": "Identificador de empresa único, de prestashop",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pedido con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al crear pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/devoluciones": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Obtiene todas las devoluciones",
+                "description": "Obtiene todas las devoluciones de los pedidos",
+                "operationId": "indexdevoluciones",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Numero de registros por pagina",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Orden de registros por atributos",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Omite registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limita registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "buscador",
+                        "in": "query",
+                        "description": "Obtiene pedido por numero",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvieron las devoluciones con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al obtener las devoluciones"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/pedidos/{id}": {
+            "get": {
+                "tags": [
+                    "Pedidos"
+                ],
+                "summary": "Obtiene pedido en concreto",
+                "description": "Obtiene pedido en concreto",
+                "operationId": "showpedido",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de pedido",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvo el pedido con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro el pedido"
+                    },
+                    "500": {
+                        "description": "Error al obtener pedido"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/tiendas": {
+            "get": {
+                "tags": [
+                    "Tiendas"
+                ],
+                "summary": "Obtiene todas las tiendas",
+                "description": "Obtiene atributos de todas las tiendas",
+                "operationId": "indextiendas",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Numero de registros por pagina",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Orden de registros por atributos",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "description": "Omite registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Limita registros",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "buscador",
+                        "in": "query",
+                        "description": "Obtiene tienda por nombre",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvieron las tiendas con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "500": {
+                        "description": "Error al obtener las tiendas"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/api/1.0.0/tiendas/{id}": {
+            "get": {
+                "tags": [
+                    "Tiendas"
+                ],
+                "summary": "Obtiene tienda en concreto",
+                "description": "Obtiene tienda en concreto",
+                "operationId": "showtienda",
+                "parameters": [
+                    {
+                        "name": "locale",
+                        "in": "header",
+                        "description": "Lenguaje",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id de tienda",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se obtuvo la tienda con exito"
+                    },
+                    "401": {
+                        "description": "No autorizado"
+                    },
+                    "404": {
+                        "description": "No se encontro la tienda"
+                    },
+                    "500": {
+                        "description": "Error al obtener tienda"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "apiKey",
+                "description": "Ingresa el token en formato (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
