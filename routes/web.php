@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{UsuariosController};
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('usuarios', UsuariosController::class);
     Route::resource('permisos', \App\Http\Controllers\PermisosController::class)->except('show');
     Route::resource('roles', \App\Http\Controllers\RolesController::class)->except('show');
+
+    // Empresas
+    Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
 
 });
