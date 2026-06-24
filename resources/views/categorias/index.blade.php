@@ -35,11 +35,11 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($autores as $autor)
+                @forelse ($categorias as $categoria)
                 <tr>
-                    <td>{{ $autor->id }}</td>
-                    <td>{{ $autor->nombre }}</td>
-                    <td>{{ $autor->descripcion }}</td>
+                    <td>{{ $categoria->id }}</td>
+                    <td>{{ $categoria->nombre }}</td>
+                    <td>{{ $categoria->descripcion }}</td>
                     <td>
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('categorias.edit', $categoria->id) }}"
