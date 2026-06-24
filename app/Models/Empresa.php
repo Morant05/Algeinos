@@ -15,4 +15,12 @@ class Empresa extends Model
         'RFC',
         'email',
     ];
+    public function empleados()
+    {
+        return $this->hasMany(Empleado::class);
+    }
+    public function sucursales()
+    {
+        return $this->hasMany(Sucursal::class);
+    }
 }
