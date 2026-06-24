@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('obras', function (Blueprint $table) {
+        Schema::create('asignacions', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->string('direccion');
-            $table->decimal('latitud');
-            $table->decimal('longitud');
-            $table->decimal('presupuesto');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->enum('estado', ['no iniciada','iniciada','pausada','finalizada'])->default('no iniciada');
+            $table->unsignedBigInteger('maquina_id');
+            $table->unsignedBigInteger('obra_id');
+            $table->unsignedBigInteger('empleado_id');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('obras');
+        Schema::dropIfExists('asignacions');
     }
 };

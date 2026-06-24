@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mantenimientos', function (Blueprint $table) {
             $table->id();
-            $table->enum('tipo', ['limpiesa','afinamiento','reparacion'])->default('limpiesa');
+            $table->unsignedBigInteger('tipoM_id');
             $table->date('fecha');
             $table->decimal('costo');
             $table->decimal('tiempo');
