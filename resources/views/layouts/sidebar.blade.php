@@ -75,7 +75,12 @@
                         </a>
                     </li>
                 @endcan
-
+                    <li class="sidebar-item">
+                        <a href="{{ route('clientes.index') }}" class="sidebar-link">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span class="hide-menu"> Clientes </span>
+                        </a>
+                    </li>
             </ul>
         </nav>
     </div>

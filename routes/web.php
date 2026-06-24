@@ -34,5 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('usuarios', UsuariosController::class);
     Route::resource('permisos', \App\Http\Controllers\PermisosController::class)->except('show');
     Route::resource('roles', \App\Http\Controllers\RolesController::class)->except('show');
+    Route::resource('categorias', \App\Http\Controllers\CategoriaController::class)->parameters(['categorias' => 'categoria']);
 
 });
