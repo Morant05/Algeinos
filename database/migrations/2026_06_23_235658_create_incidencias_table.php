@@ -13,16 +13,12 @@ return new class extends Migration
     {
         Schema::create('incidencias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
-
-            $table->foreignId('obra_id')->constrained('obras')->onDelete('cascade');
-
+            $table->foreignId('usuario_id');
+            $table->foreignId('obra_id');
             $table->string('tipo');
             $table->string('prioridad');
             $table->string('estado');
-
             $table->date('fecha');
-            
             $table->timestamps();
         });
     }
