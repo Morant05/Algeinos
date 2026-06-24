@@ -17,9 +17,9 @@ class AdministradorSeeder extends Seeder
     public function run()
     {
         $usuario = Usuario::create([
-            'email' => 'selenem563@gmail.com',
-            'nombre'  =>  'Selene Morales Morales',
-            'password'  =>  Hash::make('123'),
+            'email' => 'martinezdavid8288@gmail.com',
+            'nombre'  =>  'David',
+            'password'  =>  Hash::make('1608'),
         ]);
 
         $usuario->assignRole('super-admin');
