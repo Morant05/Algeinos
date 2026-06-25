@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EmpresaRequest;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class EmpresaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EmpresaRequest $request)
     {
         
         try {
@@ -73,9 +74,19 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empresa $empresa)
+    public function update(EmpresaRequest $request, Empresa $empresa)
     {
-        
+        try{
+            DB::beginTransaction();
+            $datos= $request->validated();
+            Empresa::update($datos);
+            DB::commit();
+            return redirect()->route('empresas.index')->with('success', 'Empresa actualizada correctamente');
+        }catch(Throwable $th){
+            Log::error("Error al actrualizar la empresa");
+            Log::error($th);
+            return redirect()->back()->withInput()->with('error', 'Hubo un error al actualizar la empresa. Intentalo de nuevo');
+        }
     }
 
     /**
@@ -83,6 +94,16 @@ class EmpresaController extends Controller
      */
     public function destroy(Empresa $empresa)
     {
-        //
+        try{
+            DB::beginTransaction();
+            $empresa->delete();
+            DB::commit();
+            return redirect()->route('empresas.index')->with('seccess', 'Empresa eliminada correctamente');
+        }catch(Throwable $th){
+            Log::error('Error al eliminar la empresa');
+            Log::error($th);
+            return redirect()->back()->with('error', 'Hubo un error al eliminar la empresa.Intentalo de nuevo');
+        }
     }
 }
+  

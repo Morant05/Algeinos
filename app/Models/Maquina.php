@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Maquina extends Model
 {
     use HasFactory;
+     protected $fillable = [
+        'nombre',
+        'marca',
+        'modelo',
+        'serie',
+        'estado',
+        'categoria_id',
+    ];
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);
+    }
+    public function scopePorNombre($query, $nombre)
+    {
+        if ($nombre) {
+            return $query->where('nombre', 'like', "%$nombre%");
+        }
+        return $query;
+    }
+        public function scopePorCategoria($query, $categoria_id)
+    {
+        if ($categoria_id) {
+            return $query->where('categoria_id', $categoria_id);
+        }
+        return $query;
+    }
 }

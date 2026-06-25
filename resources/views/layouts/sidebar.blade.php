@@ -75,12 +75,40 @@
                     </a>
                 </li>
                 @endcan
+                <li class="sidebar-item">
+                    <a href="{{ route('categorias.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="hide-menu"> Categorías </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('maquinas.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="hide-menu"> Maquinas </span>
+                    </a>
+                </li>
 
                 {{-- Empresas --}}
                 <li class="sidebar-item">
                     <a href="{{ route('empresas.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-building"></i>
                         <span class="hide-menu"> Empresas </span>
+                    </a>
+                </li>
+
+                {{-- Sucursales --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('sucursales.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-building"></i>
+                        <span class="hide-menu"> Sucursales </span>
+                    </a>
+                </li>
+
+                {{-- Empleados --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('empleados.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-person-digging"></i>
+                        <span class="hide-menu"> Empleados </span>
                     </a>
                 </li>
 

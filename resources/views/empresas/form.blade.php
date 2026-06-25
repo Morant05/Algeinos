@@ -25,7 +25,7 @@
 <div class="mb-3">
     <label for="correo" class="form-label">Correo</label>
     <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el correo de la empresa"
-        value="{{ old('correo', $empresa->correo ?? '') }}" />
+        value="{{ old('email', $empresa->email ?? '') }}" />
 </div>
 <button type="submit" class="btn waves-effect waves-light btn-success text-light rounded-pill">
     {{ isset($empresa) ? 'Editar' : 'Crear' }} empresa

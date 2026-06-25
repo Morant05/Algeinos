@@ -8,10 +8,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <form action="{{ route('empresas.edit') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('categorias.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @Method('PUT')
-        @include('empresas.form')
+        @include('categorias.form')
     </form>
 </div>
 @endsection
