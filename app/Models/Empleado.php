@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sucursal extends Model
+class Empleado extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
+    protected $fillable =[
         'nombre',
-        'direccion',
         'telefono',
         'email',
+        'estado',
         'empresa_id',
+        'puesto_id',
     ];
     public function empresa()
     {
