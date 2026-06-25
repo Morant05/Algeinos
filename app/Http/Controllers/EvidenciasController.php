@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empresa;
+use App\Models\Evidencias;
 use Illuminate\Http\Request;
 
-class EmpresaController extends Controller
+class EvidenciasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $empresas = Empresa::paginate(10); // Cambia el número 10 por la cantidad de empresas que deseas mostrar por página
-        return view('empresas.index', compact('empresas'));
+        //
     }
 
     /**
@@ -35,7 +34,7 @@ class EmpresaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Empresa $empresa)
+    public function show(Evidencias $evidencias)
     {
         //
     }
@@ -43,7 +42,7 @@ class EmpresaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Empresa $empresa)
+    public function edit(Evidencias $evidencias)
     {
         //
     }
@@ -51,7 +50,7 @@ class EmpresaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Empresa $empresa)
+    public function update(Request $request, Evidencias $evidencias)
     {
         //
     }
@@ -59,7 +58,7 @@ class EmpresaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Empresa $empresa)
+    public function destroy(Evidencias $evidencias)
     {
         //
     }

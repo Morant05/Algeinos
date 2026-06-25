@@ -48,32 +48,32 @@
 
                 {{-- Usuarios --}}
                 @can('ver-usuarios')
-                    <li class="sidebar-item">
-                        <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('usuarios.index') }}"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-user"></i> <span class="hide-menu">@lang('panel.sidebar.usuarios')</span>
-                        </a>
-                    </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('usuarios.index') }}"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-user"></i> <span class="hide-menu">@lang('panel.sidebar.usuarios')</span>
+                    </a>
+                </li>
                 @endcan
 
                 {{-- Roles --}}
                 @can('ver-roles')
-                    <li class="sidebar-item">
-                        <a href="{{ route('roles.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-user-gear"></i>
-                            <span class="hide-menu"> @lang('panel.sidebar.roles') </span>
-                        </a>
-                    </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('roles.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span class="hide-menu"> @lang('panel.sidebar.roles') </span>
+                    </a>
+                </li>
                 @endcan
 
                 {{-- Permisos --}}
                 @can('mostrar-permisos')
-                    <li class="sidebar-item">
-                        <a href="{{ route('permisos.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-lock"></i>
-                            <span class="hide-menu"> @lang('panel.sidebar.permisos') </span>
-                        </a>
-                    </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('permisos.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-lock"></i>
+                        <span class="hide-menu"> @lang('panel.sidebar.permisos') </span>
+                    </a>
+                </li>
                 @endcan
                     <li class="sidebar-item">
                         <a href="{{ route('categorias.index') }}" class="sidebar-link">
@@ -87,6 +87,15 @@
                             <span class="hide-menu"> Maquinas </span>
                         </a>
                     </li>
+
+                {{-- Empresas --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('empresas.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-building"></i>
+                        <span class="hide-menu"> Empresas </span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>

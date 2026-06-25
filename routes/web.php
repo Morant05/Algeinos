@@ -41,5 +41,17 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Empresas
     Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
+    
+    // Sucursales
+    Route::resource('sucursales', \App\Http\Controllers\SucursalController::class)->except('show');
+
+    // Empleados
+    Route::resource('empleados', \App\Http\Controllers\EmpleadoController::class)->except('show');
+
+    // Puestos
+    Route::resource('puestos', \App\Http\Controllers\PuestoController::class)->except('show');
+
+    //clientes
+    Route::resource('clientes', \App\Http\Controllers\ClienteController::class)->except('show');
 
 });
