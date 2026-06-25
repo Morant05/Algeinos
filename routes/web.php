@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{UsuariosController};
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\IncidenciaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,4 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
     //clientes
     Route::resource('clientes', \App\Http\Controllers\ClienteController::class)->except('show');
 
+    // Incidencias
+    Route::resource('incidencias', IncidenciaController::class)->except('show');
+
 });
+
