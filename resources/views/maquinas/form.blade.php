@@ -20,8 +20,10 @@
 </div>
 <div class="mb-3">
     <label for="estado" class="form-label">Estado</label>
-    <input type="text" class="form-control" name="estado" id="estado" placeholder="Ingrese el estado de la maquina"
-    value="{{ old('estado', $maquina->estado ?? '') }}"/>
+    <select class="form-control" name="estado" id="estado">
+        <option value="disponible" {{ (old('estado', $maquina->estado ?? '') == 'disponible') ? 'selected' : '' }}>Disponible</option>
+        <option value="no disponible" {{ (old('estado', $maquina->estado ?? '') == 'no disponible') ? 'selected' : '' }}>No Disponible</option>
+    </select>
 </div>
 <div>
     <label for="categoria_id" class="form-label">Categorias</label>

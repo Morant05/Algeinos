@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('marca');
             $table->string('modelo');
             $table->string('serie');
-            $table->string('estado');
+            $table->decimal('precio', 10, 2);
+            $table->enum('estado', ['disponible','no disponible'])->default('disponible');
             $table->unsignedBigInteger('categoria_id');
             $table->timestamps();
         });

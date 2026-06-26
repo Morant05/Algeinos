@@ -75,6 +75,7 @@
                     </a>
                 </li>
                 @endcan
+                {{-- Maquinaria --}}
                     <li class="sidebar-item">
                         <a href="{{ route('categorias.index') }}" class="sidebar-link">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -83,8 +84,20 @@
                     </li>
                     <li class="sidebar-item">
                         <a href="{{ route('maquinas.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i class="fa-solid fa-truck-pickup"></i>
                             <span class="hide-menu"> Maquinas </span>
+                        </a>
+                    </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('tmantenimientos.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-gears"></i>
+                        <span class="hide-menu"> Tipos de Mantenimiento </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                        <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span class="hide-menu"> Mantenimientos </span>
                         </a>
                     </li>
 
