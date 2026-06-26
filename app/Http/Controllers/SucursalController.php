@@ -81,7 +81,7 @@ class SucursalController extends Controller
         try {
             DB::beginTransaction();
             $datos = $request->validated();
-            Sucursal::update($datos);
+            $sucursal->update($datos);
             DB::commit();
             return redirect()->route('sucursales.index')->with('success', 'Sucursal actualizada correctamente');
         } catch (Throwable $th) {

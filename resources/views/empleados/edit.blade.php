@@ -8,9 +8,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <form action="{{ route('empleados.edit') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('empleados.update', $empleado->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @Method(PUT)
+        @Method('PUT')
         @include('empleados.form')
     </form>
 </div>

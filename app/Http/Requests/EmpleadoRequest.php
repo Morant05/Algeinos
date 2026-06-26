@@ -21,11 +21,13 @@ class EmpleadoRequest extends FormRequest
      */
     public function rules(): array
     {
+        $empleadoId = $this->route('empleado')?->id;
+
         return [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'telefono' => 'required|string|max:20',
-            'email' => 'required|email|unique:empleados,email',
+            'email' => 'required|email|unique:empleados,email,' . ($empleadoId ?? 'NULL'),
             'estado' => 'required|in:activo,inactivo',
             'empresa_id' => 'required|exists:empresas,id',
             'puesto_id' => 'required|exists:puestos,id',

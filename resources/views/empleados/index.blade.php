@@ -20,6 +20,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Estado</th>
@@ -33,11 +34,12 @@
                 <tr>empleado
                     <td>{{ $empleado->id }}</td>
                     <td>{{ $empleado->nombre }}</td>
+                    <td>{{ $empleado->apellido }}</td>
                     <td>{{ $empleado->telefono }}</td>
-                    <td>{{ $empleado->correo }}</td>
+                    <td>{{ $empleado->email }}</td>
                     <td>{{ $empleado->estado }}</td>
-                    <td>{{ $empleado->empresa->nombre }}</td>
                     <td>{{ $empleado->puesto->nombre }}</td>
+                    <td>{{ $empleado->empresa->nombre }}</td>
                     <td>
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('empleados.edit', $empleado->id) }}"

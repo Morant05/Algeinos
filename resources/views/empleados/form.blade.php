@@ -5,14 +5,21 @@
 </div>
 
 <div class="mb-3">
+    <label for="apellido" class="form-label">Apellido</label>
+    <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese el apellido del empleado"
+        value="{{ old('apellido', $empleado->apellido ?? '') }}" />
+</div>
+
+<div class="mb-3">
     <label for="telefono" class="form-label">Telefono</label>
     <input type="number" class="form-control" name="telefono" id="telefono" placeholder="Ingrese el telefono del empleado"
         value="{{ old('telefono', $empleado->telefono ?? '') }}" />
 </div>
 
+
 <div class="mb-3">
-    <label for="correo" class="form-label">Correo</label>
-    <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el correo del empleado"
+    <label for="email" class="form-label">Correo</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese el email del empleado"
         value="{{ old('email', $empleado->email ?? '') }}" />
 </div>
 
@@ -31,7 +38,7 @@
     <select class="form-select" name="empresa_id" id="empresa_id">
         <option value="">Seleccione una empresa</option>
         @forelse ($empresas as $empresa)
-        <option value="{{ $empresa->id }}" {{ old('empresa_id', $sucursal->empresa_id ?? '') == $empresa->id ? 'selected' : '' }}>
+        <option value="{{ $empresa->id }}" {{ old('empresa_id', $empleado->empresa_id ?? '') == $empresa->id ? 'selected' : '' }}>
             {{ $empresa->nombre }}
         </option>
         @empty

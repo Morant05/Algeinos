@@ -34,9 +34,8 @@
                     <td>{{ $empresa->nombre }}</td>
                     <td>{{ $empresa->direccion }}</td>
                     <td>{{ $empresa->telefono }}</td>
-                    <td>{{ $empresa->rfc }}</td>
-                    <td>{{ $empresa->correo }}</td>
-                    <td>
+                    <td>{{ $empresa->RFC }}</td>
+                    <td>{{ $empresa->email }}</td>
                     <td>
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('empresas.edit', $empresa->id) }}"

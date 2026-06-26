@@ -79,7 +79,7 @@ class EmpresaController extends Controller
         try{
             DB::beginTransaction();
             $datos= $request->validated();
-            Empresa::update($datos);
+            $empresa->update($datos);
             DB::commit();
             return redirect()->route('empresas.index')->with('success', 'Empresa actualizada correctamente');
         }catch(Throwable $th){

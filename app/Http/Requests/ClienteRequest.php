@@ -21,10 +21,13 @@ class ClienteRequest extends FormRequest
      */
     public function rules(): array
     {
+        $clienteId = $this->route('cliente')?->id;
+
         return [
             'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
             'telefono' => 'nullable|string|max:20',
-            'email' => 'required|email|unique:clientes,email',
+            'email' => 'required|email|unique:clientes,email,' . ($clienteId ?? 'NULL'),
             'direccion' => 'nullable|string|max:255',
             'empresa_id' => 'required|exists:empresas,id',
         ];
