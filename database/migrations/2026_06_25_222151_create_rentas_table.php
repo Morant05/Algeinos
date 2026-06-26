@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mantenimientos', function (Blueprint $table) {
+        Schema::create('rentas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tipo_id');
-            $table->date('fecha');
-            $table->decimal('costo', 10, 2);
-            $table->decimal('tiempo', 10, 2);
-            $table->string('descripcion');
             $table->unsignedBigInteger('maquina_id');
+            $table->unsignedBigInteger('empresa_id');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
+            $table->decimal('costo_dia', 10, 2);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mantenimientos');
+        Schema::dropIfExists('rentas');
     }
 };

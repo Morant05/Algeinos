@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Incidencias;
+use App\Models\Reporte;
 use Illuminate\Http\Request;
 
-class IncidenciasController extends Controller
+class ReporteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class IncidenciasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Incidencias $incidencias)
+    public function show(Reporte $reporte)
     {
         //
     }
@@ -42,7 +42,7 @@ class IncidenciasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Incidencias $incidencias)
+    public function edit(Reporte $reporte)
     {
         //
     }
@@ -50,7 +50,7 @@ class IncidenciasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Incidencias $incidencias)
+    public function update(Request $request, Reporte $reporte)
     {
         //
     }
@@ -58,7 +58,7 @@ class IncidenciasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Incidencias $incidencias)
+    public function destroy(Reporte $reporte)
     {
         //
     }

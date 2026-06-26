@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{UsuariosController};
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\IncidenciaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,10 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('roles', \App\Http\Controllers\RolesController::class)->except('show');
     Route::resource('categorias', \App\Http\Controllers\CategoriaController::class)->parameters(['categorias' => 'categoria']);
     Route::resource('maquinas', \App\Http\Controllers\MaquinaController::class)->parameters(['maquinas' => 'maquina']);
+    Route::resource('tmantenimientos', \App\Http\Controllers\TipoMantenimientoController::class)->parameters(['tmantenimientos' => 'tipo_mantenimiento']);
+    Route::resource('mantenimientos', \App\Http\Controllers\MantenimientoController::class)->parameters(['mantenimientos' => 'mantenimiento']);
 
     // Empresas
     Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
-    
+
     // Sucursales
     Route::resource('sucursales', \App\Http\Controllers\SucursalController::class)->except('show');
 
@@ -54,4 +57,8 @@ Route::group(['middleware' => 'auth'], function () {
     //clientes
     Route::resource('clientes', \App\Http\Controllers\ClienteController::class)->except('show');
 
+    // Incidencias
+    Route::resource('incidencias', IncidenciaController::class)->except('show');
+
 });
+

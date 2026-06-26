@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maquinas', function (Blueprint $table) {
+        Schema::create('evidencias', function (Blueprint $table) {
             $table->id();
+             $table->unsignedBigInteger('empresa_id');
+            $table->unsignedBigInteger('empleado_id');
             $table->string('nombre');
-            $table->string('marca');
-            $table->string('modelo');
-            $table->string('serie');
-            $table->decimal('precio', 10, 2);
-            $table->enum('estado', ['disponible','no disponible'])->default('disponible');
-            $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('incidencia_id');
+            $table->string('tipo', 50);
+            $table->text('ruta');
+            $table->integer('tamaño');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('maquinas');
+        Schema::dropIfExists('evidencias');
     }
 };
