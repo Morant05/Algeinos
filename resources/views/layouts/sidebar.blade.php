@@ -109,6 +109,22 @@
                     </a>
                 </li>
 
+                {{-- Sucursales --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('sucursales.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-building"></i>
+                        <span class="hide-menu"> Sucursales </span>
+                    </a>
+                </li>
+
+                {{-- Empleados --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('empleados.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-person-digging"></i>
+                        <span class="hide-menu"> Empleados </span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
     </div>

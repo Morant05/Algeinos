@@ -10,7 +10,7 @@
     @endif
     <form action="{{ route('empresas.edit') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @Method('PUT')
+        @Method(PUT)
         @include('empresas.form')
     </form>
 </div>
