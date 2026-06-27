@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('maquinas', \App\Http\Controllers\MaquinaController::class)->parameters(['maquinas' => 'maquina']);
     Route::resource('tmantenimientos', \App\Http\Controllers\TipoMantenimientoController::class)->parameters(['tmantenimientos' => 'tipo_mantenimiento']);
     Route::resource('mantenimientos', \App\Http\Controllers\MantenimientoController::class)->parameters(['mantenimientos' => 'mantenimiento']);
-
+    Route::resource('obras', \App\Http\Controllers\ObraController::class)->parameters(['obras' => 'obra']);
     // Empresas
     Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
 

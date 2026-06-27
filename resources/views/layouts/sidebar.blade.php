@@ -97,7 +97,13 @@
                 <li class="sidebar-item">
                         <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
                             <i class="fa-solid fa-pen-to-square"></i>
-                            <span class="hide-menu"> Mantenimientos </span>
+                            <span class="hide-menu"> Mantenimiento </span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('obras.index') }}" class="sidebar-link">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span class="hide-menu"> Obras </span>
                         </a>
                     </li>
 
