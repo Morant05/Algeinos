@@ -22,7 +22,9 @@ class EmpleadoRequest extends FormRequest
     public function rules(): array
     {
         $empleadoId = $this->route('empleado')?->id;
-
+        $passwordRules = in_array($this->method(), ['PUT', 'PATCH'])
+            ? ['nullable', 'string', 'min:8', 'same:confirmar-password']
+            : ['required', 'string', 'min:8', 'same:confirmar-password'];
         return [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -31,6 +33,8 @@ class EmpleadoRequest extends FormRequest
             'estado' => 'required|in:activo,inactivo',
             'empresa_id' => 'required|exists:empresas,id',
             'puesto_id' => 'required|exists:puestos,id',
+            'password' => $passwordRules,
+            'confirmar-password' => ['required_with:password', 'same:password'],
         ];
     }
 }

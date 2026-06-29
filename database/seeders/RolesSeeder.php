@@ -21,6 +21,7 @@ class RolesSeeder extends Seeder
         //Creamos los roles correspondientes
         $superadmin = Role::create(['name' => 'super-admin', 'descripcion' => 'Super Administrador']);
         $admin = Role::create(['name' => 'admin', 'descripcion' => 'Administrador']);
+        $empleado = Role::create(['name' => 'empleado', 'descripcion' => 'Empleado']);
         //Asignamos los permisos a los roles correspondientes
         $superadmin->givePermissionTo(Permission::all());
         $admin->givePermissionTo([
@@ -36,5 +37,10 @@ class RolesSeeder extends Seeder
             'borrar-rol',
             'mostrar-permisos',
         ]);
+        $empleado->givePermissionTo([
+            'ver-obras',
+            'ver-asignacion-maquinaria',
+        ]);
+        
     }
 }
