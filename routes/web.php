@@ -42,6 +42,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('tmantenimientos', \App\Http\Controllers\TipoMantenimientoController::class)->parameters(['tmantenimientos' => 'tipo_mantenimiento']);
     Route::resource('mantenimientos', \App\Http\Controllers\MantenimientoController::class)->parameters(['mantenimientos' => 'mantenimiento']);
     Route::resource('obras', \App\Http\Controllers\ObraController::class)->parameters(['obras' => 'obra']);
+    Route::resource('asignaciones', \App\Http\Controllers\AsignacionController::class)->parameters(['asignaciones' => 'asignacion']);
+
     // Empresas
     Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
 

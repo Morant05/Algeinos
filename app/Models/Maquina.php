@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Maquina extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'maquinas';
 
      protected $fillable = [
@@ -35,5 +35,11 @@ class Maquina extends Model
             return $query->where('categoria_id', $categoria_id);
         }
         return $query;
+    }
+        public function maquinas()
+    {
+        return $this->belongsToMany(Maquina::class, 'rentas_maquinaria')
+                    ->withPivot('precio', 'maquina_id', 'renta_id')
+                    ->withTimestamps();
     }
 }

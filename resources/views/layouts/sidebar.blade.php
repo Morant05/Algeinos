@@ -99,19 +99,24 @@
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="hide-menu"> Mantenimientos </span>
                     </a>
-                </li>
-                        <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            <span class="hide-menu"> Mantenimiento </span>
-                        </a>
-                    </li>
                     <li class="sidebar-item">
                         <a href="{{ route('obras.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                           <i class="fa-solid fa-screwdriver-wrench"></i>
                             <span class="hide-menu"> Obras </span>
                         </a>
                     </li>
-
+                    <li class="sidebar-item">
+                        <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
+                            <i class="fa-solid fa-trowel"></i>
+                            <span class="hide-menu"> Asignaciones </span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('rentas.index') }}" class="sidebar-link">
+                            <i class="fa-solid fa-trowel"></i>
+                            <span class="hide-menu"> Renta </span>
+                        </a>
+                    </li>
                 {{-- Empresas --}}
                 <li class="sidebar-item">
                     <a href="{{ route('empresas.index') }}" class="sidebar-link">
