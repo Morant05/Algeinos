@@ -20,6 +20,8 @@ return new class extends Migration
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('puesto_id');
+            $table->boolean('tiene_usuario');
+            $table->unsignedBigInteger('usuario_id')->nullable();
             $table->timestamps();
         });
     }
