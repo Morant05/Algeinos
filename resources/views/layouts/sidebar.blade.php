@@ -76,18 +76,18 @@
                 </li>
                 @endcan
                 {{-- Maquinaria --}}
-                    <li class="sidebar-item">
-                        <a href="{{ route('categorias.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-pen-to-square"></i>
-                            <span class="hide-menu"> Categorías </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('maquinas.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-truck-pickup"></i>
-                            <span class="hide-menu"> Maquinas </span>
-                        </a>
-                    </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('categorias.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="hide-menu"> Categorías </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('maquinas.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-truck-pickup"></i>
+                        <span class="hide-menu"> Maquinas </span>
+                    </a>
+                </li>
                 <li class="sidebar-item">
                     <a href="{{ route('tmantenimientos.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-gears"></i>
@@ -95,6 +95,11 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span class="hide-menu"> Mantenimientos </span>
+                    </a>
+                </li>
                         <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
                             <i class="fa-solid fa-pen-to-square"></i>
                             <span class="hide-menu"> Mantenimiento </span>
@@ -128,6 +133,22 @@
                     <a href="{{ route('empleados.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-person-digging"></i>
                         <span class="hide-menu"> Empleados </span>
+                    </a>
+                </li>
+
+                {{-- Puestos --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('puestos.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <span class="hide-menu"> Puestos </span>
+                    </a>
+                </li>
+
+                {{-- Clientes --}}
+                <li class="sidebar-item">
+                    <a href="{{ route('clientes.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-user"></i>
+                        <span class="hide-menu"> Clientes </span>
                     </a>
                 </li>
 

@@ -6,7 +6,7 @@
 
 <div class="mb-3">
     <label for="direccion" class="form-label">Direccion</label>
-    <input type="number" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion de la empresa"
+    <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion de la empresa"
         value="{{ old('direccion', $empresa->direccion ?? '') }}" />
 </div>
 
@@ -17,14 +17,14 @@
 </div>
 
 <div class="mb-3">
-    <label for="rfc" class="form-label">RFC</label>
-    <input type="text" class="form-control" name="rfc" id="rfc" placeholder="Ingrese el RFC de la empresa"
-        value="{{ old('rfc', $empresa->rfc ?? '') }}" />
+    <label for="RFC" class="form-label">RFC</label>
+    <input type="text" class="form-control" name="RFC" id="RFC" placeholder="Ingrese el RFC de la empresa" required
+        value="{{ old('RFC', $empresa->RFC ?? '') }}" />
 </div>
 
 <div class="mb-3">
-    <label for="correo" class="form-label">Correo</label>
-    <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el correo de la empresa"
+    <label for="email" class="form-label">Correo</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese el correo de la empresa" required
         value="{{ old('email', $empresa->email ?? '') }}" />
 </div>
 <button type="submit" class="btn waves-effect waves-light btn-success text-light rounded-pill">

@@ -21,12 +21,13 @@ class EmpresaRequest extends FormRequest
      */
     public function rules(): array
     {
+        $empresaId = $this->route('empresa')?->id;
         return [
             'nombre' => 'required|string|max:255',
             'direccion' => 'required|string|max:255',
             'telefono' => 'required|string|max:20',
-            'RFC' => 'required|string|max:255|unique:empresas,RFC',
-            'email' => 'required|email|max:255|unique:empresas,email',
+            'RFC' => 'required|string|max:255|unique:empresas,RFC,' . ($empresaId ?? 'NULL'),
+            'email' => 'required|email|max:255|unique:empresas,email,' . ($empresaId ?? 'NULL'),
         ];
     }
 }

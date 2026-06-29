@@ -6,7 +6,7 @@
 
 <div class="mb-3">
     <label for="direccion" class="form-label">Direccion</label>
-    <input type="number" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion de la sucursal"
+    <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese la direccion de la sucursal"
         value="{{ old('direccion', $sucursal->direccion ?? '') }}" />
 </div>
 
@@ -17,8 +17,8 @@
 </div>
 
 <div class="mb-3">
-    <label for="correo" class="form-label">Correo</label>
-    <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese el correo de la sucursal"
+    <label for="email" class="form-label">Correo</label>
+    <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese el correo de la sucursal" required
         value="{{ old('email', $sucursal->email ?? '') }}" />
 </div>
 
@@ -27,7 +27,7 @@
     <select class="form-select" name="empresa_id" id="empresa_id">
         <option value="">Seleccione una empresa</option>
         @forelse ($empresas as $empresa)
-        <option value="{{ $categoria->id }}" {{ old('empresa_id', $sucursal->empresa_id ?? '') == $empresa->id ? 'selected' : '' }}>
+        <option value="{{ $empresa->id }}" {{ old('empresa_id', $sucursal->empresa_id ?? '') == $empresa->id ? 'selected' : '' }}>
             {{ $empresa->nombre }}
         </option>
         @empty

@@ -8,10 +8,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-    <form action="{{ route('sucursales.update', $sucursal->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('puestos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @Method(PUT)
-        @include('sucurlaes.form')
+        @include('puestos.form')
     </form>
 </div>
 @endsection

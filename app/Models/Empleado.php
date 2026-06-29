@@ -10,6 +10,7 @@ class Empleado extends Model
     use HasFactory;
     protected $fillable =[
         'nombre',
+        'apellido',
         'telefono',
         'email',
         'estado',
@@ -20,4 +21,9 @@ class Empleado extends Model
     {
         return $this->belongsTo(Empresa::class);
     }
+    public function puesto()
+    {
+        return $this->belongsTo(Puesto::class);
+    }
+
 }
