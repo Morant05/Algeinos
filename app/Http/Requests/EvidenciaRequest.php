@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IncidenciaRequest extends FormRequest
+class EvidenciaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,7 +12,6 @@ class IncidenciaRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-
     }
 
     /**
@@ -24,12 +23,13 @@ class IncidenciaRequest extends FormRequest
     {
         return [
             //
-            'usuario_id' => ['required|exists:usuarios,id|max:255'],
-            'obra_id' => ['required|exists:obras,id|max:255'],
-            'tipo' => ['required|string|max:255'],
-            'prioridad' => ['required|string|max:255'],
-            'estado' => ['required|string|max:255'],
-            'fecha' => ['required|date|max:255'],
+           'empresa_id'    => 'required|exists:empresas,id|max:255',
+            'empleado_id'   => 'required|exists:empleados,id|max:255',
+            'incidencia_id' => 'required|exists:incidencias,id|max:255',
+            'nombre'        => 'required|string|max:255',
+            'tipo'          => 'required|string|max:50',
+            'ruta'          => 'required|string|max:255',
+            'tamaño'        => 'required|integer|max:255',
         ];
     }
 }
