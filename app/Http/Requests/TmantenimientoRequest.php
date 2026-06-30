@@ -22,7 +22,7 @@ class TmantenimientoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:255|unique:tmantenimientos,nombre,' . ($this->route('tmantenimiento')?->id ?? 'NULL'),
+            'nombre' => 'required|string|max:255|unique:tipo_mantenimientos,nombre,' . ($this->route('tipo_mantenimiento')?->id ?? 'NULL'),
             'descripcion' => 'required|string|max:255',
         ];
     }
