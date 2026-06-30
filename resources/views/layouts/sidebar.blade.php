@@ -39,12 +39,14 @@
             <ul id="sidebarnav">
 
                 {{-- Tablero --}}
+                @can('ver-tablero')
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" id="tablero"
                         href="{{ route('home') }}" aria-expanded="false">
                         <i class="fas fa-tachometer-alt"></i> <span class="hide-menu">@lang('panel.sidebar.tablero')</span>
                     </a>
                 </li>
+                @endcan
 
                 {{-- Usuarios --}}
                 @can('ver-usuarios')
@@ -76,86 +78,112 @@
                 </li>
                 @endcan
                 {{-- Maquinaria --}}
+                @can('ver-categoria')
                 <li class="sidebar-item">
                     <a href="{{ route('categorias.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span class="hide-menu"> Categorías </span>
                     </a>
                 </li>
+                @endcan
+
+                @can('ver-maquinas')
                 <li class="sidebar-item">
                     <a href="{{ route('maquinas.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-truck-pickup"></i>
                         <span class="hide-menu"> Maquinas </span>
                     </a>
                 </li>
+                @endcan
+
+                @can('ver-tipo-mantenimiento')
                 <li class="sidebar-item">
                     <a href="{{ route('tmantenimientos.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-gears"></i>
                         <span class="hide-menu"> Tipos de Mantenimiento </span>
                     </a>
                 </li>
+                @endcan
+
+                @can('ver-mantenimientos')
                 <li class="sidebar-item">
                     <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
                         <span class="hide-menu"> Mantenimientos </span>
                     </a>
-                    <li class="sidebar-item">
-                        <a href="{{ route('obras.index') }}" class="sidebar-link">
-                           <i class="fa-solid fa-screwdriver-wrench"></i>
-                            <span class="hide-menu"> Obras </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-trowel"></i>
-                            <span class="hide-menu"> Asignaciones </span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('rentas.index') }}" class="sidebar-link">
-                            <i class="fa-solid fa-trowel"></i>
-                            <span class="hide-menu"> Renta </span>
-                        </a>
-                    </li>
+                </li>
+                @endcan
+
+                @can('ver-obras')
+                <li class="sidebar-item">
+                    <a href="{{ route('obras.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-helmet-safety"></i>
+                        <span class="hide-menu"> Obras </span>
+                    </a>
+                </li>
+                @endcan
+
+                <li class="sidebar-item">
+                    <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-trowel"></i>
+                        <span class="hide-menu"> Asignaciones </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('rentas.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-trowel"></i>
+                        <span class="hide-menu"> Renta </span>
+                    </a>
+                </li>
                 {{-- Empresas --}}
+                @can('ver-empresas')
                 <li class="sidebar-item">
                     <a href="{{ route('empresas.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-building"></i>
                         <span class="hide-menu"> Empresas </span>
                     </a>
                 </li>
+                @endcan
 
                 {{-- Sucursales --}}
+                @can('ver-sucursales')
                 <li class="sidebar-item">
                     <a href="{{ route('sucursales.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-building"></i>
                         <span class="hide-menu"> Sucursales </span>
                     </a>
                 </li>
+                @endcan
 
                 {{-- Empleados --}}
+                @can('ver-empleados')
                 <li class="sidebar-item">
                     <a href="{{ route('empleados.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-person-digging"></i>
                         <span class="hide-menu"> Empleados </span>
                     </a>
                 </li>
+                @endcan
 
                 {{-- Puestos --}}
+                @can('ver-puestos')
                 <li class="sidebar-item">
                     <a href="{{ route('puestos.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-users-gear"></i>
                         <span class="hide-menu"> Puestos </span>
                     </a>
                 </li>
+                @endcan
 
                 {{-- Clientes --}}
+                @can('ver-clientes')
                 <li class="sidebar-item">
                     <a href="{{ route('clientes.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span class="hide-menu"> Clientes </span>
                     </a>
                 </li>
+                @endcan
 
             </ul>
         </nav>

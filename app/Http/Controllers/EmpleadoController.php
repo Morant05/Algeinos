@@ -6,9 +6,11 @@ use App\Http\Requests\EmpleadoRequest;
 use App\Models\Empleado;
 use App\Models\Empresa;
 use App\Models\Puesto;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Hash;
 use Throwable;
 
 class EmpleadoController extends Controller
@@ -52,16 +54,38 @@ class EmpleadoController extends Controller
      */
     public function store(EmpleadoRequest $request)
     {
-        try{
+        try {
+            $datos = $request->validated();
+            $password = $datos['password'];
+
+            unset($datos['password']);
+            unset($datos['confirmar-password']);
+
+            if (Usuario::where('email', $datos['email'])->exists()) {
+                return redirect()->back()->withInput()->with('error', 'El email ya existe en usuarios.');
+            }
+
             DB::beginTransaction();
-            $datos=$request->validated();
-            Empleado::create($datos);
+
+            $empleado = Empleado::create($datos);
+
+            $usuario= Usuario::create([
+                'nombre' => trim($empleado->nombre . ' ' . $empleado->apellido),
+                'email' => $empleado->email,
+                'password' => Hash::make($password),
+            ]);
+            $usuario->assignRole('Empleado');
+
             DB::commit();
-            return redirect()->route('empleados.index')->with('success', 'Empleado correctamente');
-        }catch(Throwable $th){
-            Log::error("Error al crear el empleado");
-            Log::error($th);
-            return redirect()->back()->withInput()->with('error', 'Hubo un error al crear el empleado. Intentalo de nuevo');
+
+            return redirect()->route('empleados.index')->with('success', 'Empleado y usuario creados correctamente.');
+        } catch (\Exception $ex) {
+            DB::rollBack();
+
+            Log::error('Error al crear empleado y usuario');
+            Log::error($ex);
+
+            return redirect()->back()->withInput()->with('error', 'No se pudo crear el empleado.');
         }
     }
 

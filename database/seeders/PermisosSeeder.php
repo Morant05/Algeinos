@@ -23,13 +23,34 @@ class PermisosSeeder extends Seeder
             ['permiso' => 'editar-usuario', 'grupo' => 'usuarios'],
             ['permiso' => 'borrar-usuario', 'grupo' => 'usuarios'],
             ['permiso' => 'restaurar-usuario', 'grupo' => 'usuarios'],
-
             //Roles
             ['permiso' => 'ver-roles', 'grupo' => 'roles'],
             ['permiso' => 'crear-rol', 'grupo' => 'roles'],
             ['permiso' => 'editar-rol', 'grupo' => 'roles'],
             ['permiso' => 'borrar-rol', 'grupo' => 'roles'],
             ['permiso' => 'mostrar-permisos', 'grupo' => 'roles'],
+            
+            //Empleados
+            ['permiso' => 'ver-obras', 'grupo' => 'empleados'],
+            ['permiso' => 'ver-asignacion-maquinaria', 'grupo' => 'empleados'],
+
+            //Sidebar
+            ['permiso' => 'ver-tablero', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-categorias', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-maquinas', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-tipo-mantenimiento', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-mantenimientos', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-empresas', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-sucursales', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-empleados', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-puestos', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-clientes', 'grupo' => 'sidebar'],
+
+
+
+
+
+
         ];
 
         foreach ($permisos as $permiso) {

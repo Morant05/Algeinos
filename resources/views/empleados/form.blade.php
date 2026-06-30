@@ -23,6 +23,32 @@
         value="{{ old('email', $empleado->email ?? '') }}" />
 </div>
 
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="password">Contraseña @if(!isset($empleado) || !$empleado)<span class="text-danger">*</span>@endif</label>
+            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                id="password" name="password" placeholder="Mínimo 8 caracteres"
+                {{ (!isset($empleado) || !$empleado) ? 'required' : '' }}>
+            @error('password')
+            <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="confirmar-password">Confirmar contraseña @if(!isset($empleado) || !$empleado)<span class="text-danger">*</span>@endif</label>
+            <input type="password" class="form-control @error('confirmar-password') is-invalid @enderror"
+                id="confirmar-password" name="confirmar-password" placeholder="Repite la contraseña"
+                {{ (!isset($empleado) || !$empleado) ? 'required' : '' }}>
+            @error('confirmar-password')
+            <span class="invalid-feedback">{{ $message }}</span>
+            @enderror
+        </div>
+    </div>
+</div>
+
 <div class="col-xs-12 col-sm-12 col-md-6 mb-4">
     <label for="estado" class="form-label">Estado</label>
     <select class="form-select" name="estado" id="estado">
