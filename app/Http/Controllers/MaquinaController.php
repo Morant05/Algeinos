@@ -108,13 +108,19 @@ class MaquinaController extends Controller
      */
     public function destroy(Maquina $maquina)
     {
-    try {
+       try {
+            DB::beginTransaction();
+            Asignacion::where('maquina_id', $maquina->id)->delete();
             $maquina->delete();
-            return redirect()->route('maquinas.index')->with('success', 'maquina eliminado correctamente');
+            DB::commit();
+            return redirect()->route('maquinas.index')->with('success', 'Maquina eliminada correctamente');
         } catch (\Throwable $th) {
+            DB::rollBack();
             Log::error("Error al eliminar maquina:");
             Log::error($th);
-            return redirect()->back()->with('error', 'Hubo un error al eliminar la maquina. Inténtalo de nuevo');
+            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar la maquina. Inténtalo de nuevo');
+
         }
     }
 }
+

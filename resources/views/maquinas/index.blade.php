@@ -46,6 +46,7 @@
                     <th scope="col">Marca</th>
                     <th scope="col">Modelo</th>
                     <th scope="col">Serie</th>
+                    <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Acciones</th>
@@ -59,6 +60,7 @@
                     <td>{{ $maquina->marca }}</td>
                     <td>{{ $maquina->modelo }}</td>
                     <td>{{ $maquina->serie }}</td>
+                    <td>{{ $maquina->precio }}</td>
                     <td>{{ $maquina->estado }}</td>
                     <td>{{ $maquina->categoria->nombre }}</td>
                     <td>

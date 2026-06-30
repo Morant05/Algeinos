@@ -114,12 +114,16 @@ class MantenimientoController extends Controller
     public function destroy(Mantenimiento $mantenimiento)
     {
         try {
+            $mantenimiento= Mantenimiento::findOrFail($id);
+            Producto::where('mantenimiento_id', $mantenimiento->id)->delete();
             $mantenimiento->delete();
-            return redirect()->route('mantenimientos.index')->with('success', 'mantenimiento eliminado correctamente');
+            return redirect()->route('mantenimientos.index')->with('success', 'Mantenimiento eliminado correctamente');
         } catch (\Throwable $th) {
-            Log::error("Error al eliminar mantenimiento");
+            Log::error("Error al eliminar mantenimiento:");
             Log::error($th);
-            return redirect()->back()->with('error', 'Hubo un error al eliminar el mantenimiento. Inténtalo de nuevo');
+
+            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar el mantenimiento. Inténtalo de nuevo');
+
         }
     }
 }

@@ -26,6 +26,7 @@ class MaquinaRequest extends FormRequest
             'marca' => 'required|string|max:255',
             'modelo' => 'required|string|max:255',
             'serie' => 'required|string|max:255|unique:maquinas,serie,' . ($this->route('maquina')?->id ?? 'NULL'),
+            'precio' => 'required|numeric|min:0',
             'estado' => 'required|string|max:255',
             'categoria_id' => 'required|exists:categorias,id',
         ];

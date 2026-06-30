@@ -96,7 +96,7 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-pen-to-square"></i>
+                        <i class="fa-solid fa-helmet-safety"></i>
                         <span class="hide-menu"> Mantenimientos </span>
                     </a>
                     <li class="sidebar-item">
