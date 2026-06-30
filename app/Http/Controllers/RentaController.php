@@ -12,7 +12,8 @@ class RentaController extends Controller
      */
     public function index()
     {
-        //
+        $rentas = Renta::paginate(10);
+        return view('rentas.index', compact('rentas'));
     }
 
     /**

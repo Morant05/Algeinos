@@ -123,18 +123,25 @@
                 </li>
                 @endcan
 
+                @can('ver-asignacion-maquinaria')
                 <li class="sidebar-item">
                     <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-trowel"></i>
+                        <i class="fa-solid fa-pen-ruler"></i>
                         <span class="hide-menu"> Asignaciones </span>
                     </a>
                 </li>
+                @endcan
+
+                @can('ver-rentas')
                 <li class="sidebar-item">
                     <a href="{{ route('rentas.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-trowel"></i>
+                        <i class="fa-solid fa-stopwatch"></i>
                         <span class="hide-menu"> Renta </span>
                     </a>
                 </li>
+                @endcan
+
+                
                 {{-- Empresas --}}
                 @can('ver-empresas')
                 <li class="sidebar-item">
@@ -179,7 +186,7 @@
                 @can('ver-clientes')
                 <li class="sidebar-item">
                     <a href="{{ route('clientes.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-circle-user"></i>
                         <span class="hide-menu"> Clientes </span>
                     </a>
                 </li>
