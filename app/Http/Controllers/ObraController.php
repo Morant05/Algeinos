@@ -106,12 +106,17 @@ class ObraController extends Controller
     public function destroy(obra $obra)
     {
         try {
+            DB::beginTransaction();
+            Asignacion::where('obra_id', $obra->id)->delete();
             $obra->delete();
+            DB::commit();
             return redirect()->route('obras.index')->with('success', 'Obra eliminada correctamente');
         } catch (\Throwable $th) {
+            DB::rollBack();
             Log::error("Error al eliminar obra:");
             Log::error($th);
-            return redirect()->back()->with('error', 'Hubo un error al eliminar la obra. Inténtalo de nuevo');
+            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar la obra. Inténtalo de nuevo');
+
         }
     }
 }

@@ -16,6 +16,7 @@ class Maquina extends Model
         'marca',
         'modelo',
         'serie',
+        'precio',
         'estado',
         'categoria_id',
     ];
@@ -36,10 +37,13 @@ class Maquina extends Model
         }
         return $query;
     }
+    /*
         public function maquinas()
     {
         return $this->belongsToMany(Maquina::class, 'rentas_maquinaria')
                     ->withPivot('precio', 'maquina_id', 'renta_id')
                     ->withTimestamps();
     }
+}
+*/
 }

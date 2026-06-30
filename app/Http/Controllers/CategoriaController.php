@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Models\Maquina;
 use App\Http\Requests\CategoriasRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -103,13 +104,18 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        try{
+        try {
+            DB::beginTransaction();
+            Maquina::where('categoria_id', $categoria->id)->delete();
             $categoria->delete();
-            return redirect()->route('categorias.index')->with('success', 'autor eliminado con exito');
-        }catch (\Throwable $th){
-            Log::error("error al eliminar categoria:");
+            DB::commit();
+            return redirect()->route('categorias.index')->with('success', 'Categoria eliminada correctamente');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            Log::error("Error al eliminar categoria:");
             Log::error($th);
-            return redirect()->back()->with('error','hubo un error al eliminar la categoria');
+            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar la categoria. Inténtalo de nuevo');
+
         }
     }
 }

@@ -22,7 +22,7 @@ class ObraRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'unique:obras,nombre|required|string|max:255',
+            'nombre' => 'required|string|max:255|unique:obras,nombre,' . ($this->route('obra')?->id ?? 'NULL'),
             'descripcion' => 'nullable|string|max:255',
             'direccion' => 'nullable|string|max:255',
             'latitud' => 'nullable|numeric|min:-90|max:90',

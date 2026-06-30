@@ -19,6 +19,11 @@
     value="{{ old('serie', $maquina->serie ?? '') }}"/>
 </div>
 <div class="mb-3">
+    <label for="precio" class="form-label">Precio Por Hora</label>
+    <input type="number" class="form-control" name="precio" id="precio" placeholder="Ingrese el precio por hora de la maquina"
+    value="{{ old('precio', $maquina->precio ?? '') }}"/>
+</div>
+<div class="mb-3">
     <label for="estado" class="form-label">Estado</label>
     <select class="form-control" name="estado" id="estado">
         <option value="disponible" {{ (old('estado', $maquina->estado ?? '') == 'disponible') ? 'selected' : '' }}>Disponible</option>
