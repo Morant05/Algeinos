@@ -65,5 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
     //Rentas
     Route::resource('rentas', \App\Http\Controllers\RentaController::class)->except('show');
 
+    // Reportes
+    Route::resource('reportes', \App\Http\Controllers\ReporteController::class)->except('show');
+
+    // Evidencias
+    Route::resource('evidencias', \App\Http\Controllers\EvidenciaController::class)->except('show');
 });
 

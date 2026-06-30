@@ -191,7 +191,35 @@
                     </a>
                 </li>
                 @endcan
+                {{-- Reportes --}}
+                @can('ver-reportes')
+                <li class="sidebar-item">
+                    <a href="{{ route('reportes.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span class="hide-menu"> Reportes </span>
+                    </a>  
+                </li>
+                @endcan
 
+                {{-- Evidencias --}}
+                @can('ver-evidencias')
+                <li class="sidebar-item">
+                    <a href="{{ route('evidencias.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-image"></i>
+                        <span class="hide-menu"> Evidencias </span>
+                    </a>
+                </li>
+                @endcan
+                 {{-- Incidencias --}}
+                @can('ver-incidencias')
+                <li class="sidebar-item">
+                    <a href="{{ route('incidencias.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span class="hide-menu"> Incidencias </span>
+                    </a>
+                </li>
+                @endcan
+                `
             </ul>
         </nav>
     </div>
