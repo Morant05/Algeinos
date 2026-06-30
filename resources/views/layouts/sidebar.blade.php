@@ -123,6 +123,18 @@
                 </li>
                 @endcan
 
+                <li class="sidebar-item">
+                    <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-trowel"></i>
+                        <span class="hide-menu"> Asignaciones </span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('rentas.index') }}" class="sidebar-link">
+                        <i class="fa-solid fa-trowel"></i>
+                        <span class="hide-menu"> Renta </span>
+                    </a>
+                </li>
                 {{-- Empresas --}}
                 @can('ver-empresas')
                 <li class="sidebar-item">
