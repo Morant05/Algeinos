@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reportes', function (Blueprint $table) {
-            $table->id();
-             $table->unsignedBigInteger('proyecto_id'); 
-        $table->unsignedBigInteger('empleado_id');
-        $table->string('tipo', 50); 
-        $table->text('contenido'); 
-        $table->date('fecha');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('reportes')) {
+            Schema::create('reportes', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('proyecto_id');
+                $table->unsignedBigInteger('empleado_id');
+                $table->string('tipo', 50);
+                $table->text('contenido');
+                $table->date('fecha');
+                $table->timestamps();
+            });
+        }
     }
 
     /**

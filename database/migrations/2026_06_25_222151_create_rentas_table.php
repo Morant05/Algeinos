@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('rentas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('maquina_id');
-            $table->unsignedBigInteger('empresa_id');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->decimal('costo_dia', 10, 2);
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->decimal('total', 10, 2);
+            $table->unsignedBigInteger('empresa_id');
+            $table->unsignedBigInteger('usuario_id');
+            $table->enum('estado', ['aceptada', 'denegada','pendiente'])->default('pendiente');
             $table->timestamps();
         });
     }
