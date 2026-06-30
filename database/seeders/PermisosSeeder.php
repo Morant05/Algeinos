@@ -33,11 +33,21 @@ class PermisosSeeder extends Seeder
             //Empleados
             ['permiso' => 'ver-obras', 'grupo' => 'empleados'],
             ['permiso' => 'ver-asignacion-maquinaria', 'grupo' => 'empleados'],
+            ['permiso' => 'crear-obras', 'grupo' => 'empleados'],
+            ['permiso' => 'editar-obras', 'grupo' => 'empleados'],
+            ['permiso' => 'eliminar-obras', 'grupo' => 'empleados'],
+            ['permiso' => 'crear-maquinas', 'grupo' => 'empleados'],
+            ['permiso' => 'editar-maquinas', 'grupo' => 'empleados'],
+            ['permiso' => 'eliminar-maquinas', 'grupo' => 'empleados'],
+            
+            
+            
 
             //Sidebar
             ['permiso' => 'ver-tablero', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-categorias', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-maquinas', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-rentas', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-tipo-mantenimiento', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-mantenimientos', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-empresas', 'grupo' => 'sidebar'],
@@ -45,10 +55,9 @@ class PermisosSeeder extends Seeder
             ['permiso' => 'ver-empleados', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-puestos', 'grupo' => 'sidebar'],
             ['permiso' => 'ver-clientes', 'grupo' => 'sidebar'],
-
-
-
-
+            ['permiso' => 'ver-incidentes', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-reportes', 'grupo' => 'sidebar'],
+            ['permiso' => 'ver-bitacora', 'grupo' => 'sidebar'],
 
 
         ];

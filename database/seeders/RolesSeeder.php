@@ -40,6 +40,9 @@ class RolesSeeder extends Seeder
         $empleado->givePermissionTo([
             'ver-obras',
             'ver-asignacion-maquinaria',
+            'ver-reportes',
+            'ver-incidencias',
+            'ver-bitacora',
         ]);
         
     }

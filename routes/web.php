@@ -62,5 +62,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Incidencias
     Route::resource('incidencias', IncidenciaController::class)->except('show');
 
+    //Rentas
+    Route::resource('rentas', \App\Http\Controllers\RentaController::class)->except('show');
+
 });
 
