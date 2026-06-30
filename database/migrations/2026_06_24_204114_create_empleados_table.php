@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->enum('estado', ['activo', 'inactivo'])->default('activo');
             $table->unsignedBigInteger('empresa_id');
-            $table->unsignedBigInteger('puesto_id');
             $table->timestamps();
         });
     }

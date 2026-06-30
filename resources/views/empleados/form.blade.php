@@ -73,20 +73,6 @@
     </select>
 </div>
 
-<div class="mb-3">
-    <label for="puesto_id" class="form-label">Puesto</label>
-    <select class="form-select" name="puesto_id" id="puesto_id">
-        <option value="">Seleccione un puesto</option>
-        @forelse ($puestos as $puesto)
-        <option value="{{ $puesto->id }}" {{ old('puesto_id', $empleado->puesto_id ?? '') == $puesto->id ? 'selected' : '' }}>
-            {{ $puesto->nombre }}
-        </option>
-        @empty
-        <option value="" disabled>No hay puestos disponibles</option>
-        @endforelse
-    </select>
-</div>
-
 <button type="submit" class="btn waves-effect waves-light btn-success text-light rounded-pill">
     {{ isset($empleado) ? 'Editar' : 'Crear' }} empleado
 </button>
