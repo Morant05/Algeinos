@@ -19,7 +19,9 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Obras</h2>
+        @can('crear-obras')
         <a href="{{ route('obras.create') }}" class="btn btn-primary">Crear Obra</a>
+        @endcan
     </div>
 
     <div class="table-responsive">
@@ -36,7 +38,9 @@
                     <th scope="col">Fecha Inicio</th>
                     <th scope="col">Fecha Fin</th>
                     <th scope="col">Estado</th>
+                    @canany(['editar-obras', 'eliminar-obras'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -52,14 +56,18 @@
                     <td>{{ $obra->fecha_inicio }}</td>
                     <td>{{ $obra->fecha_fin }}</td>
                     <td>{{ $obra->estado }}</td>
+                    @canany(['editar-obras', 'eliminar-obras'])
                     <td>
                         <div class="btn-group">
+                            @can('editar-obras')
                             <a id="btn-edit" href="{{ route('obras.edit', $obra->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-obras')
                             <a id="btn-delete" href="{{ route('obras.destroy', $obra->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
@@ -68,6 +76,7 @@
                             </a>
                         </div>
                     </td>
+                    @endcanany
                 </tr>
                 @empty
                 <tr>

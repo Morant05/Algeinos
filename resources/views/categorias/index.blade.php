@@ -31,7 +31,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Descripcion</th>
+                    @canany(['editar-categorias', 'eliminar-categorias'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +42,9 @@
                     <td>{{ $categoria->id }}</td>
                     <td>{{ $categoria->nombre }}</td>
                     <td>{{ $categoria->descripcion }}</td>
+                    @canany(['editar-categorias', 'eliminar-categorias'])
                     <td>
+                        @can('editar-categorias')
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('categorias.edit', $categoria->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
@@ -48,12 +52,15 @@
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-categorias')
                             <a id="btn-delete" href="{{ route('categorias.destroy', $categoria->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
+                            @endcan
                         </div>
                     </td>
                 </tr>

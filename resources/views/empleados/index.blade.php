@@ -9,10 +9,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
+    @can('crear-empleados')
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Empresas</h2>
+        <h2>Empleados</h2>
         <a href="{{ route('empleados.create') }}" class="btn btn-primary">Crear Empleado</a>
     </div>
+    @endcan
 
     <div class="table-responsive">
         <table class="table table-primary">
@@ -25,12 +27,15 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Empresa</th>
+                    <th scope="col">Rol</th>
+                    @canany(['editar-empleados', 'eliminar-empleados'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
                 @forelse ($empleados as $empleado)
-                <tr>empleado
+                <tr>
                     <td>{{ $empleado->id }}</td>
                     <td>{{ $empleado->nombre }}</td>
                     <td>{{ $empleado->apellido }}</td>
@@ -38,22 +43,25 @@
                     <td>{{ $empleado->email }}</td>
                     <td>{{ $empleado->estado }}</td>
                     <td>{{ $empleado->empresa->nombre }}</td>
+                    <td>{{ $empleado->rol_name }}</td>
+                    @canany(['editar-empleados', 'eliminar-empleados'])
                     <td>
                         <div class="btn-group">
-                            <a id="btn-edit" href="{{ route('empleados.edit', $empleado->id) }}"
-                                style="padding: 3px 20px; font-size: 14px;"
-                                class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
-                                data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
-                                <i class="fa-regular fa-pen-to-square"></i>
+                            @can('editar-empleados')
+                            <a href="{{ route('empleados.edit', $empleado->id) }}" class="btn btn-warning">
+                                Editar
                             </a>
-                            <a id="btn-delete" href="{{ route('empleados.destroy', $empleado->id) }}"
-                                style="padding: 3px 20px; font-size: 14px;"
-                                class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
-                                data-bs-target="#dialog-destroy" data-bs-toggle="modal">
-                                <i class="far fa-trash-alt remove-note"></i>
+                            @endcan
+
+                            @can('eliminar-empleados')
+                            <a href="{{ route('empleados.destroy', $empleado->id) }}"
+                                class="btn btn-danger">
+                                Eliminar
                             </a>
+                            @endcan
                         </div>
                     </td>
+                    @endcanany
                 </tr>
                 @empty
                 <tr>

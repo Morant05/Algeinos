@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Throwable;
 
 class EmpleadoController extends Controller
@@ -20,16 +21,15 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        try{
+        try {
             $empresas = Empresa::all();
-            $empleados = Empleado::paginate(10);
+            $empleados = Empleado::with(['empresa', 'usuario.roles'])->paginate(10);
             return view('empleados.index', compact('empresas', 'empleados'));
-        }catch(Throwable $th){
+        } catch (Throwable $th) {
             Log::error("Error al listar los empleados");
             Log::error($th);
             return redirect()->back()->with('error', 'Hubo un error al listar los empleados. Intentalo de nuevo');
         }
-        
     }
 
     /**
@@ -37,13 +37,21 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        try{
-            $empresas= Empresa::all();
-            return view('empleados.create', compact('empresas'));
-        }catch(Throwable $th){
-        Log::error("Error al cargar el formulario de creación");
-        Log::error($th);
-        return redirect()->back()->with('error','Hubo un error al cargar el formulario de creacion. Intentalo de nuevo');
+        try {
+            $roles = Role::whereIn('name', [
+                'Empleado',
+                'gerente',
+                'supervisor-obras',
+                'encargado-maquinaria',
+                'operador-maquinaria',
+                'mecanico',
+            ])->get();
+            $empresas = Empresa::all();
+            return view('empleados.create', compact('empresas', 'roles'));
+        } catch (Throwable $th) {
+            Log::error("Error al cargar el formulario de creación");
+            Log::error($th);
+            return redirect()->back()->with('error', 'Hubo un error al cargar el formulario de creacion. Intentalo de nuevo');
         }
     }
 
@@ -53,6 +61,7 @@ class EmpleadoController extends Controller
     public function store(EmpleadoRequest $request)
     {
         try {
+            
             $datos = $request->validated();
             $password = $datos['password'];
 
@@ -67,12 +76,12 @@ class EmpleadoController extends Controller
 
             $empleado = Empleado::create($datos);
 
-            $usuario= Usuario::create([
+            $usuario = Usuario::create([
                 'nombre' => trim($empleado->nombre . ' ' . $empleado->apellido),
                 'email' => $empleado->email,
                 'password' => Hash::make($password),
             ]);
-            $usuario->assignRole('Empleado');
+            $usuario->assignRole($request->rol);
 
             DB::commit();
 
@@ -102,7 +111,15 @@ class EmpleadoController extends Controller
     {
         try {
             $empresas = Empresa::all();
-            return view('empleados.edit', compact('empleado', 'empresas'));
+            $roles = Role::whereIn('name', [
+                'Empleado',
+                'gerente',
+                'supervisor-obras',
+                'encargado-maquinaria',
+                'operador-maquinaria',
+                'mecanico',
+            ])->get();
+            return view('empleados.edit', compact('empleado', 'empresas', 'roles'));
         } catch (Throwable $th) {
             Log::error("Error al mostra el formulario de edicion");
             Log::error($th);

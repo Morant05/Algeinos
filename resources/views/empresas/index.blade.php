@@ -11,7 +11,9 @@
     @endif
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Empresas</h2>
+        @can('crear-empresas')
         <a href="{{ route('empresas.create') }}" class="btn btn-primary">Crear Empresa</a>
+        @endcan
     </div>
 
     <div class="table-responsive">
@@ -24,7 +26,9 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">RFC</th>
                     <th scope="col">Correo</th>
+                    @canany(['editar-empresas', 'eliminar-empresas'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +40,9 @@
                     <td>{{ $empresa->telefono }}</td>
                     <td>{{ $empresa->RFC }}</td>
                     <td>{{ $empresa->email }}</td>
+                    @canany(['editar-empresas', 'eliminar-empresas'])
                     <td>
+                        @can('editar-empresas')
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('empresas.edit', $empresa->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
@@ -44,14 +50,18 @@
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-empresas')
                             <a id="btn-delete" href="{{ route('empresas.destroy', $empresa->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
+                            @endcan
                         </div>
                     </td>
+                    @endcanany
                 </tr>
                 @empty
                 <tr>

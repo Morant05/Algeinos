@@ -1,108 +1,98 @@
 @extends('layouts.app')
 
-@section('title', 'Listado de Incidencias')
-
 @section('content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
+<div class="container">
 
-                {{-- Sección Buscador --}}
-                <div class="card-body row">
-                    <div class="col-12 col-md-6">
-                        {!! Form::open(['method' => 'GET', 'class' => 'row']) !!}
-
-                        <div class="col-12">
-                            <div class="input-group">
-                                {!! Form::text('busqueda', request('busqueda'), [
-                                    'class' => 'form-control',
-                                    'placeholder' => 'Buscar incidencia...',
-                                ]) !!}
-
-                                {{ Form::button('<i class="fa-solid fa-magnifying-glass"></i>', [
-                                    'type' => 'submit',
-                                    'class' => 'btn waves-effect waves-light btn-success text-light'
-                                ]) }}
-                            </div>
-                        </div>
-
-                        {!! Form::close() !!}
-                    </div>
-
-                    <div class="col-12 col-md-6 text-end mt-3 mt-md-0">
-                        <a href="{{ route('incidencias.create') }}"
-                           class="btn waves-effect waves-light btn-rounded btn-light-info text-info border-info">
-                            <i class="fa-solid fa-plus"></i> Crear
-                        </a>
-                    </div>
-                </div>
-
-                {{-- Tabla --}}
-                <div class="table-responsive">
-                    <table class="table customize-table mb-0 v-middle">
-                        <thead class="table-light">
-                        <tr>
-                            <th>Usuario</th>
-                            <th>Obra</th>
-                            <th>Tipo</th>
-                            <th>Prioridad</th>
-                            <th>Estado</th>
-                            <th>Fecha</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        @forelse($incidencias as $incidencia)
-                            <tr>
-                                <td>{{ $incidencia->usuario->nombre ?? 'N/A' }}</td>
-                                <td>{{ $incidencia->obra->nombre ?? 'N/A' }}</td>
-                                <td>{{ $incidencia->tipo }}</td>
-                                <td>{{ $incidencia->prioridad }}</td>
-                                <td>{{ $incidencia->estado }}</td>
-                                <td>{{ $incidencia->fecha }}</td>
-
-                                <td>
-                                    <div class="btn-group">
-
-                                        <a href="{{ route('incidencias.show', $incidencia->id) }}"
-                                           class="btn waves-effect waves-light btn-rounded btn-light-info text-info border-info">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
-
-                                        <a href="{{ route('incidencias.edit', $incidencia->id) }}"
-                                           class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning">
-                                            <i class="fa-regular fa-pen-to-square"></i>
-                                        </a>
-
-                                        <form action="{{ route('incidencias.destroy', $incidencia->id) }}"
-                                              method="POST"
-                                              style="display:inline-block">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit"
-                                                    class="btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
-                                                    onclick="return confirm('¿Desea eliminar esta incidencia?')">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </form>
-
-                                    </div>
-                                </td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="7">
-                                    No se encontraron incidencias.
-                                </td>
-                            </tr>
-                        @endforelse
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
+    {{-- Mensaje de sesión --}}
+    @if (Session::has('mensaje'))
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Mensaje:</strong> {{ Session::get('mensaje') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    @endif
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Incidencias</h2>
+        @can('crear-incidencias')
+        <a href="{{ route('incidencias.create') }}" class="btn btn-primary">Crear Incidencia</a>
+        @endcan
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Prioridad</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Obra</th>
+                    @canany(['editar-incidencias', 'eliminar-incidencias'])
+                    <th scope="col">Acciones</th>
+                    @endcanany
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @forelse ($incidencias as $incidencia)
+                <tr>
+
+                    <td>{{ $incidencia->id }}</td>
+                    <td>{{ $incidencia->tipo }}</td>
+                    <td>{{ $incidencia->prioridad }}</td>
+                    <td>{{ $incidencia->estado }}</td>
+                    <td>{{ $incidencia->fecha }}</td>
+                    <td>{{ $incidencia->usuario->name }}</td>
+                    <td>{{ $incidencia->obra->nombre }}</td>
+                    @canany(['editar-incidencias', 'eliminar-incidencias'])
+                    <td>
+                        <div class="btn-group">
+                            @can('editar-incidencias')
+                            <a id="btn-edit"
+                                href="{{ route('incidencias.edit', $incidencia->id) }}"
+                                style="padding: 3px 20px; font-size: 14px;"
+                                class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                title="Editar">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
+                            @endcan
+                            @can('eliminar-incidencias')
+                            <a id="btn-delete"
+                                href="{{ route('incidencias.destroy', $incidencia->id) }}"
+                                style="padding: 3px 20px; font-size: 14px;"
+                                class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
+                                data-bs-target="#dialog-destroy"
+                                data-bs-toggle="modal">
+                                <i class="far fa-trash-alt remove-note"></i>
+                            </a>
+                            @endcan
+
+                        </div>
+                    </td>
+                    @endcanany
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="8" class="text-center">
+                        No hay incidencias registradas
+                    </td>
+                </tr>
+                @endforelse
+
+            </tbody>
+
+        </table>
+    </div>
+
+    {{-- Paginador --}}
+    <div>
+        {{ $incidencias->links('pagination::bootstrap-5') }}
+    </div>
+
+</div>
 @endsection

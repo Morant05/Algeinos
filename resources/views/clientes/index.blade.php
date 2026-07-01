@@ -12,7 +12,9 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Clientes</h2>
+        @can('crear-clientes')
         <a href="{{ route('clientes.create') }}" class="btn btn-primary">Crear Cliente</a>
+        @endcan
     </div>
 
     <div class="table-responsive">
@@ -25,7 +27,9 @@
                     <th scope="col">Correo</th>
                     <th scope="col">Dirección</th>
                     <th scope="col">Empresa</th>
+                    @canany(['editar-clientes', 'eliminar-clientes'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -37,7 +41,9 @@
                     <td>{{ $cliente->email }}</td>
                     <td>{{ $cliente->direccion }}</td>
                     <td>{{ $cliente->empresa->nombre ?? 'N/A' }}</td>
+                    @canany(['editar-clientes', 'eliminar-clientes'])
                     <td>
+                        @can('editar-clientes')
                         <div class="btn-group">
                             <a id="btn-edit" href="{{ route('clientes.edit', $cliente->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
@@ -45,12 +51,15 @@
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-clientes')
                             <a id="btn-delete" href="{{ route('clientes.destroy', $cliente->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
+                            @endcan
                         </div>
                     </td>
                 </tr>

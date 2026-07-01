@@ -9,15 +9,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
-<form method="GET" action="{{ route('mantenimientos.index') }}" class="mb-3">
+    <form method="GET" action="{{ route('mantenimientos.index') }}" class="mb-3">
         <div class="row g-2">
             <div class="col-md-5">
                 <select class="form-select" name="maquina_id">
                     <option value="">Filtrar por Maquina</option>
                     @foreach ($maquinas as $maquina)
-                        <option value="{{ $maquina->id }}" {{ request('maquina_id') == $maquina->id ? 'selected' : '' }}>
-                            {{ $maquina->nombre }}
-                        </option>
+                    <option value="{{ $maquina->id }}" {{ request('maquina_id') == $maquina->id ? 'selected' : '' }}>
+                        {{ $maquina->nombre }}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -25,9 +25,9 @@
                 <select class="form-select" name="tipo_id">
                     <option value="">Filtrar por tipo de mantenimiento</option>
                     @foreach ($tipo_mantenimientos as $tmantenimiento)
-                        <option value="{{ $tmantenimiento->id }}" {{ request('tipo_id') == $tmantenimiento->id ? 'selected' : '' }}>
-                            {{ $tmantenimiento->nombre }}
-                        </option>
+                    <option value="{{ $tmantenimiento->id }}" {{ request('tipo_id') == $tmantenimiento->id ? 'selected' : '' }}>
+                        {{ $tmantenimiento->nombre }}
+                    </option>
                     @endforeach
                 </select>
             </div>
@@ -54,7 +54,9 @@
                     <th scope="col">Tiempo</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">Máquina</th>
+                    @canany(['editar-mantenimientos', 'eliminar-mantenimientos'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -67,22 +69,28 @@
                     <td>{{ $mantenimiento->tiempo }}</td>
                     <td>{{ $mantenimiento->descripcion }}</td>
                     <td>{{ $mantenimiento->maquina->nombre }}</td>
+                    @canany(['editar-mantenimientos', 'eliminar-mantenimientos'])
                     <td>
                         <div class="btn-group">
+                            @can('editar-mantenimientos')
                             <a id="btn-edit" href="{{ route('mantenimientos.edit', $mantenimiento->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-mantenimientos')
                             <a id="btn-delete" href="{{ route('mantenimientos.destroy', $mantenimiento->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
+                            @endcan
                         </div>
                     </td>
+                    @endcanany
                 </tr>
                 @empty
                 <tr>

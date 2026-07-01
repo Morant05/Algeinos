@@ -105,7 +105,7 @@
                 </li>
                 @endcan
 
-                @can('ver-mantenimientos')
+                @can('ver-mantenimiento')
                 <li class="sidebar-item">
                     <a href="{{ route('mantenimientos.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
@@ -123,7 +123,7 @@
                 </li>
                 @endcan
 
-                @can('ver-asignacion-maquinaria')
+                @can('ver-asignacion-maquinas')
                 <li class="sidebar-item">
                     <a href="{{ route('asignaciones.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-pen-ruler"></i>
@@ -209,7 +209,6 @@
                     </a>
                 </li>
                 @endcan
-                `
             </ul>
         </nav>
     </div>

@@ -34,7 +34,9 @@
     {{-- Formulario de búsqueda --}}
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Maquinas</h2>
+        @can('crear-maquinas')
         <a href="{{ route('maquinas.create') }}" class="btn btn-primary">Crear Maquina</a>
+        @endcan
     </div>
 
     <div class="table-responsive">
@@ -49,7 +51,9 @@
                     <th scope="col">Precio</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Categoria</th>
+                    @canany(['editar-maquinas', 'eliminar-maquinas'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
             <tbody>
@@ -63,22 +67,28 @@
                     <td>{{ $maquina->precio }}</td>
                     <td>{{ $maquina->estado }}</td>
                     <td>{{ $maquina->categoria->nombre }}</td>
+                    @canany(['editar-maquinas', 'eliminar-maquinas'])
                     <td>
                         <div class="btn-group">
+                            @can('editar-maquinas')
                             <a id="btn-edit" href="{{ route('maquinas.edit', $maquina->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
+                            @endcan
+                            @can('eliminar-maquinas')
                             <a id="btn-delete" href="{{ route('maquinas.destroy', $maquina->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
+                            @endcan
                         </div>
                     </td>
+                    @endcanany
                 </tr>
                 @empty
                 <tr>

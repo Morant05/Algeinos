@@ -73,6 +73,18 @@
     </select>
 </div>
 
+<div class="mb-3">
+    <label for="rol" class="form-label">Rol</label>
+    <select class="form-select" name="rol" id="rol">
+        <option value="">Seleccione un rol</option>
+        @foreach ($roles as $rol)
+        <option value="{{ $rol->name }}" {{ old('rol', $empleado->rol ?? '') == $rol->name ? 'selected' : '' }}>
+            {{ $rol->name }}
+        </option>
+        @endforeach
+    </select>
+</div>
+
 <button type="submit" class="btn waves-effect waves-light btn-success text-light rounded-pill">
     {{ isset($empleado) ? 'Editar' : 'Crear' }} empleado
 </button>

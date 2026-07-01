@@ -43,9 +43,30 @@ class RolesSeeder extends Seeder
             'borrar-rol',
             'mostrar-permisos',
         ]);
+        $gerente->givePermissionTo([
+            'ver-obras',
+            'crear-obras',
+            'editar-obras',
+            'eliminar-obras',
+            'ver-empleados',
+            'ver-maquinas',
+            'crear-maquinas',
+            'editar-maquinas',
+            'eliminar-maquinas',
+            'ver-asignacion-maquinas',
+            'crear-asignacion',
+            'editar-asignacion',
+            'eliminar-asignacion',
+            'crear-mantenimiento',
+            'editar-mantenimiento',
+            'eliminar-mantenimiento',
+            'ver-mantenimiento',
+            'ver-tipo-mantenimiento',   
+        ]);
+
         $empleado->givePermissionTo([
             'ver-obras',
-            'ver-asignacion-maquinaria',
+            'ver-asignacion-maquinas',
         ]);
 
         $supervisorObras->givePermissionTo([

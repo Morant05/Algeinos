@@ -13,7 +13,9 @@
 
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Evidencias</h2>
+        @can('crear-evidencias')
         <a href="{{ route('evidencias.create') }}" class="btn btn-primary">Crear Evidencia</a>
+        @endcan
     </div>
 
     <div class="table-responsive">
@@ -28,7 +30,9 @@
                     <th scope="col">Empresa</th>
                     <th scope="col">Empleado</th>
                     <th scope="col">Incidencia</th>
+                    @canany(['editar-evidencias', 'eliminar-evidencias'])
                     <th scope="col">Acciones</th>
+                    @endcanany
                 </tr>
             </thead>
 
@@ -44,10 +48,10 @@
                     <td>{{ $evidencia->empresa->nombre }}</td>
                     <td>{{ $evidencia->empleado->nombre }}</td>
                     <td>{{ $evidencia->incidencia->id }}</td>
-
+                    @canany(['editar-evidencias', 'eliminar-evidencias'])
                     <td>
                         <div class="btn-group">
-
+                            @can('editar-evidencias')
                             <a id="btn-edit"
                                 href="{{ route('evidencias.edit', $evidencia->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
@@ -57,7 +61,8 @@
                                 title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
-
+                            @endcan
+                            @can('eliminar-evidencias')
                             <a id="btn-delete"
                                 href="{{ route('evidencias.destroy', $evidencia->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
@@ -66,10 +71,10 @@
                                 data-bs-toggle="modal">
                                 <i class="far fa-trash-alt remove-note"></i>
                             </a>
-
+                            @endcan
                         </div>
                     </td>
-
+                    @endcanany
                 </tr>
                 @empty
                 <tr>
