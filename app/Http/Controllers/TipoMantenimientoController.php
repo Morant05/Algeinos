@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\tipo_mantenimiento;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use App\Models\Mantenimiento;
 use App\Http\Requests\TmantenimientoRequest;
 use Illuminate\Http\Request;
 
@@ -103,19 +104,16 @@ class TipoMantenimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tipo_mantenimiento $tipo_mantenimiento)
-    {
-       try {
-            $tipo_mantenimiento = Tipo_mantenimiento::findOrFail($id);
-            Mantenimiento::where('tipo_id', $tipo_mantenimiento->id)->delete();
-            $tipo_mantenimiento->delete();
-            return redirect()->route('tmantenimientos.index')->with('success', 'Tipo de mantenimiento eliminado correctamente');
-        } catch (\Throwable $th) {
-            Log::error("Error al eliminar tipo de mantenimiento:");
-            Log::error($th);
-
-            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar el tipo de mantenimiento. Inténtalo de nuevo');
-
-        }
+public function destroy(tipo_mantenimiento $tipo_mantenimiento)
+{
+    try {
+        Mantenimiento::where('tipo_id', $tipo_mantenimiento->id)->delete();
+        $tipo_mantenimiento->delete();
+        return redirect()->route('tmantenimientos.index')->with('success', 'Tipo de mantenimiento eliminado correctamente');
+    } catch (\Throwable $th) {
+        Log::error("Error al eliminar tipo de mantenimiento:");
+        Log::error($th);
+        return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar el tipo de mantenimiento. Inténtalo de nuevo');
     }
+}
 }

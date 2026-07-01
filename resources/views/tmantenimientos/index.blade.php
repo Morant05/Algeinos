@@ -36,20 +36,20 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($tipo_mantenimientos as $tmantenimiento)
+                @forelse ($tipo_mantenimientos as $tipo_mantenimiento)
                 <tr>
-                    <td>{{ $tmantenimiento->id }}</td>
-                    <td>{{ $tmantenimiento->nombre }}</td>
-                    <td>{{ $tmantenimiento->descripcion }}</td>
+                    <td>{{ $tipo_mantenimiento->id }}</td>
+                    <td>{{ $tipo_mantenimiento->nombre }}</td>
+                    <td>{{ $tipo_mantenimiento->descripcion }}</td>
                     <td>
                         <div class="btn-group">
-                            <a id="btn-edit" href="{{ route('tmantenimientos.edit', $tmantenimiento->id) }}"
+                            <a id="btn-edit" href="{{ route('tmantenimientos.edit', $tipo_mantenimiento->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="btn waves-effect waves-light btn-rounded btn-light-warning text-warning border-warning"
                                 data-bs-toggle="tooltip" data-bs-placement="bottom" title="Editar">
                                 <i class="fa-regular fa-pen-to-square"></i>
                             </a>
-                            <a id="btn-delete" href="{{ route('tmantenimientos.destroy', $tmantenimiento->id) }}"
+                            <a id="btn-delete" href="{{ route('tmantenimientos.destroy', $tipo_mantenimiento->id) }}"
                                 style="padding: 3px 20px; font-size: 14px;"
                                 class="action-destroy btn waves-effect waves-light btn-rounded btn-light-danger text-danger border-danger"
                                 data-bs-target="#dialog-destroy" data-bs-toggle="modal">
