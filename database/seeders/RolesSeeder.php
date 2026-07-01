@@ -45,17 +45,7 @@ class RolesSeeder extends Seeder
         ]);
         $empleado->givePermissionTo([
             'ver-obras',
-            'ver-asignacion-maquinas',
-        ]);
-
-        $gerente->givePermissionTo([
-            'ver-categorias',
-            'ver-maquinas',
-            'ver-asignacion-maquinas',
-            'ver-tipo-mantenimiento',
-            'ver-mantenimiento',
-            'ver-empleados',
-            'ver-obras'
+            'ver-asignacion-maquinaria',
         ]);
 
         $supervisorObras->givePermissionTo([
