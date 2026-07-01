@@ -67,5 +67,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Evidencias
     Route::resource('evidencias', \App\Http\Controllers\EvidenciaController::class)->except('show');
+
+    // Bitacoras
+    Route::resource('bitacoras', \App\Http\Controllers\BitacoraController::class)->except('show');
 });
 

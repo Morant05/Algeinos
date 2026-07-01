@@ -1,95 +1,90 @@
-<div class="row">
+<div class="mb-3">
+    <label for="usuario_id" class="form-label">Usuario</label>
+    <select class="form-select" name="usuario_id" id="usuario_id">
+        <option value="">Seleccione un usuario</option>
 
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('usuario_id', 'Usuario', ['class' => 'form-label']) !!}
-        {!! Form::select(
-            'usuario_id',
-            $usuarios->pluck('nombre', 'id'),
-            old('usuario_id', $incidencia->usuario_id ?? null),
-            [
-                'class' => 'form-control',
-                'placeholder' => 'Seleccione un usuario'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('obra_id', 'Obra', ['class' => 'form-label']) !!}
-        {!! Form::select(
-            'obra_id',
-            $obras->pluck('nombre', 'id'),
-            old('obra_id', $incidencia->obra_id ?? null),
-            [
-                'class' => 'form-control',
-                'placeholder' => 'Seleccione una obra'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('tipo', 'Tipo', ['class' => 'form-label']) !!}
-        {!! Form::text(
-            'tipo',
-            old('tipo', $incidencia->tipo ?? null),
-            [
-                'class' => 'form-control',
-                'placeholder' => 'Tipo de incidencia'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('prioridad', 'Prioridad', ['class' => 'form-label']) !!}
-        {!! Form::select(
-            'prioridad',
-            [
-                'Baja' => 'Baja',
-                'Media' => 'Media',
-                'Alta' => 'Alta'
-            ],
-            old('prioridad', $incidencia->prioridad ?? null),
-            [
-                'class' => 'form-control',
-                'placeholder' => 'Seleccione la prioridad'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('estado', 'Estado', ['class' => 'form-label']) !!}
-        {!! Form::select(
-            'estado',
-            [
-                'Abierta' => 'Abierta',
-                'En proceso' => 'En proceso',
-                'Cerrada' => 'Cerrada'
-            ],
-            old('estado', $incidencia->estado ?? null),
-            [
-                'class' => 'form-control',
-                'placeholder' => 'Seleccione el estado'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-4">
-        {!! Form::label('fecha', 'Fecha', ['class' => 'form-label']) !!}
-        {!! Form::date(
-            'fecha',
-            old('fecha', $incidencia->fecha ?? date('Y-m-d')),
-            [
-                'class' => 'form-control'
-            ]
-        ) !!}
-    </div>
-
-    <div class="col-12 col-md-6 mb-0 mb-md-4 mt-auto">
-        <div class="text-end">
-            {{ Form::button('<i class="fa-solid fa-floppy-disk"></i> Guardar', [
-                'type' => 'submit',
-                'class' => 'btn waves-effect waves-light btn-rounded btn-light-info text-info border-info col-8 col-sm-6'
-            ]) }}
-        </div>
-    </div>
-
+        @forelse ($usuarios as $usuario)
+            <option
+                value="{{ $usuario->id }}"
+                {{ old('usuario_id', $incidencia->usuario_id ?? '') == $usuario->id ? 'selected' : '' }}>
+                {{ $usuario->name }}
+            </option>
+        @empty
+            <option value="" disabled>No hay usuarios disponibles</option>
+        @endforelse
+    </select>
 </div>
+
+<div class="mb-3">
+    <label for="obra_id" class="form-label">Obra</label>
+    <select class="form-select" name="obra_id" id="obra_id">
+        <option value="">Seleccione una obra</option>
+
+        @forelse ($obras as $obra)
+            <option
+                value="{{ $obra->id }}"
+                {{ old('obra_id', $incidencia->obra_id ?? '') == $obra->id ? 'selected' : '' }}>
+                {{ $obra->nombre }}
+            </option>
+        @empty
+            <option value="" disabled>No hay obras disponibles</option>
+        @endforelse
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="tipo" class="form-label">Tipo</label>
+    <input
+        type="text"
+        class="form-control"
+        name="tipo"
+        id="tipo"
+        placeholder="Ingrese el tipo de incidencia"
+        value="{{ old('tipo', $incidencia->tipo ?? '') }}"
+    />
+</div>
+
+<div class="mb-3">
+    <label for="prioridad" class="form-label">Prioridad</label>
+    <select class="form-select" name="prioridad" id="prioridad">
+        <option value="">Seleccione una prioridad</option>
+
+        @foreach (['Baja', 'Media', 'Alta'] as $prioridad)
+            <option
+                value="{{ $prioridad }}"
+                {{ old('prioridad', $incidencia->prioridad ?? '') == $prioridad ? 'selected' : '' }}>
+                {{ $prioridad }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="estado" class="form-label">Estado</label>
+    <select class="form-select" name="estado" id="estado">
+        <option value="">Seleccione un estado</option>
+
+        @foreach (['Pendiente', 'En proceso', 'Resuelta'] as $estado)
+            <option
+                value="{{ $estado }}"
+                {{ old('estado', $incidencia->estado ?? '') == $estado ? 'selected' : '' }}>
+                {{ $estado }}
+            </option>
+        @endforeach
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="fecha" class="form-label">Fecha</label>
+    <input
+        type="date"
+        class="form-control"
+        name="fecha"
+        id="fecha"
+        value="{{ old('fecha', $incidencia->fecha ?? '') }}"
+    />
+</div>
+
+<button type="submit" class="btn waves-effect waves-light btn-success text-light rounded-pill">
+    {{ isset($incidencia) ? 'Editar' : 'Crear' }} incidencia
+</button>
