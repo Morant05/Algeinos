@@ -22,6 +22,12 @@ class RolesSeeder extends Seeder
         $superadmin = Role::create(['name' => 'super-admin', 'descripcion' => 'Super Administrador']);
         $admin = Role::create(['name' => 'admin', 'descripcion' => 'Administrador']);
         $empleado = Role::create(['name' => 'empleado', 'descripcion' => 'Empleado']);
+        $gerente = Role::create(['name' => 'gerente', 'descripcion' => 'Gerente']);
+        $supervisorObras = Role::create(['name' => 'supervisor-obras', 'descripcion' => 'Supervisor de Obras']);
+        $encargadoMaquinaria = Role::create(['name' => 'engargado-maquinaria', 'descripcion' => 'Encargado de Maquinaria']);
+        $mecanico = Role::create(['name' => 'mecanico', 'descripcion' => 'Mecanico']);
+        $operadorMaquinaria = Role::create(['name' => 'operador-maquinaria', 'descripcion' => 'Operador de Maquinaria']);
+
         //Asignamos los permisos a los roles correspondientes
         $superadmin->givePermissionTo(Permission::all());
         $admin->givePermissionTo([
@@ -41,6 +47,40 @@ class RolesSeeder extends Seeder
             'ver-obras',
             'ver-asignacion-maquinaria',
         ]);
-        
+
+        $supervisorObras->givePermissionTo([
+            'ver-obras',
+            'crear-obras',
+            'editar-obras',
+            'eliminar-obras',
+            'ver-empleados',
+        ]);
+
+        $encargadoMaquinaria->givePermissionTo([
+            'ver-maquinas',
+            'crear-maquinas',
+            'editar-maquinas',
+            'eliminar-maquinas',
+            'ver-asignacion-maquinas',
+            'crear-asignacion',
+            'editar-asignacion',
+            'eliminar-asignacion',
+            'crear-mantenimiento',
+            'editar-mantenimiento',
+            'eliminar-mantenimiento',
+        ]);
+
+        $mecanico->givePermissionTo([
+            'ver-mantenimiento',
+            'ver-tipo-mantenimiento',
+            'crear-tipo-mantenimiento',
+            'editar-tipo-mantenimiento',
+            'eliminar-tipo-mantenimiento',
+        ]);
+
+        $operadorMaquinaria->givePermissionTo([
+            'ver-asignacion-maquinas',
+        ]);
+
     }
 }

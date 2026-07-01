@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Maquina;
 use App\Models\Categoria;
+use App\Models\Asignacion;
+use App\Models\Mantenimiento;
 use App\Http\Requests\MaquinaRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -106,21 +108,21 @@ class MaquinaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Maquina $maquina)
-    {
-       try {
-            DB::beginTransaction();
-            Asignacion::where('maquina_id', $maquina->id)->delete();
-            $maquina->delete();
-            DB::commit();
-            return redirect()->route('maquinas.index')->with('success', 'Maquina eliminada correctamente');
-        } catch (\Throwable $th) {
-            DB::rollBack();
-            Log::error("Error al eliminar maquina:");
-            Log::error($th);
-            return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar la maquina. Inténtalo de nuevo');
-
-        }
+public function destroy(Maquina $maquina)
+{
+    try {
+        DB::beginTransaction();
+        Asignacion::where('maquina_id', $maquina->id)->delete();
+        Mantenimiento::where('maquina_id', $maquina->id)->delete();
+        $maquina->delete();
+        DB::commit();
+        return redirect()->route('maquinas.index')->with('success', 'Maquina eliminada correctamente');
+    } catch (\Throwable $th) {
+        DB::rollBack();
+        Log::error("Error al eliminar maquina:");
+        Log::error($th);
+        return redirect()->back()->withInput()->with('error', 'Hubo un error al eliminar la maquina. Inténtalo de nuevo');
     }
+}
 }
 

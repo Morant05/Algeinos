@@ -43,7 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('mantenimientos', \App\Http\Controllers\MantenimientoController::class)->parameters(['mantenimientos' => 'mantenimiento']);
     Route::resource('obras', \App\Http\Controllers\ObraController::class)->parameters(['obras' => 'obra']);
     Route::resource('asignaciones', \App\Http\Controllers\AsignacionController::class)->parameters(['asignaciones' => 'asignacion']);
-    Route::resource('rentas', \App\Http\Controllers\RentasController::class)->parameters(['rentas' => 'renta']);
+    Route::resource('rentas', \App\Http\Controllers\RentaController::class)->parameters(['rentas' => 'renta']);
     // Empresas
     Route::resource('empresas', \App\Http\Controllers\EmpresaController::class)->except('show');
 
@@ -52,9 +52,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Empleados
     Route::resource('empleados', \App\Http\Controllers\EmpleadoController::class)->except('show');
-
-    // Puestos
-    Route::resource('puestos', \App\Http\Controllers\PuestoController::class)->except('show');
 
     //clientes
     Route::resource('clientes', \App\Http\Controllers\ClienteController::class)->except('show');

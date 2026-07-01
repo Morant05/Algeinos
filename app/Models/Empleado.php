@@ -15,15 +15,10 @@ class Empleado extends Model
         'email',
         'estado',
         'empresa_id',
-        'puesto_id',
     ];
     public function empresa()
     {
         return $this->belongsTo(Empresa::class);
-    }
-    public function puesto()
-    {
-        return $this->belongsTo(Puesto::class);
     }
 
 }

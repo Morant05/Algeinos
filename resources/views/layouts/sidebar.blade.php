@@ -78,7 +78,7 @@
                 </li>
                 @endcan
                 {{-- Maquinaria --}}
-                @can('ver-categoria')
+                @can('ver-categorias')
                 <li class="sidebar-item">
                     <a href="{{ route('categorias.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -141,7 +141,7 @@
                 </li>
                 @endcan
 
-                
+
                 {{-- Empresas --}}
                 @can('ver-empresas')
                 <li class="sidebar-item">
@@ -168,16 +168,6 @@
                     <a href="{{ route('empleados.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-person-digging"></i>
                         <span class="hide-menu"> Empleados </span>
-                    </a>
-                </li>
-                @endcan
-
-                {{-- Puestos --}}
-                @can('ver-puestos')
-                <li class="sidebar-item">
-                    <a href="{{ route('puestos.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-users-gear"></i>
-                        <span class="hide-menu"> Puestos </span>
                     </a>
                 </li>
                 @endcan
