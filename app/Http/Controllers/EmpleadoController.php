@@ -21,10 +21,9 @@ class EmpleadoController extends Controller
     public function index()
     {
         try{
-            $puestos=Puesto::all();
             $empresas = Empresa::all();
             $empleados = Empleado::paginate(10);
-            return view('empleados.index', compact('empresas', 'empleados', 'puestos'));
+            return view('empleados.index', compact('empresas', 'empleados'));
         }catch(Throwable $th){
             Log::error("Error al listar los empleados");
             Log::error($th);
@@ -40,8 +39,7 @@ class EmpleadoController extends Controller
     {
         try{
             $empresas= Empresa::all();
-            $puestos=Puesto::all();
-            return view('empleados.create', compact('empresas', 'puestos'));
+            return view('empleados.create', compact('empresas'));
         }catch(Throwable $th){
         Log::error("Error al cargar el formulario de creación");
         Log::error($th);
@@ -104,8 +102,7 @@ class EmpleadoController extends Controller
     {
         try {
             $empresas = Empresa::all();
-            $puestos = Puesto::all();
-            return view('empleados.edit', compact('empleado', 'empresas', 'puestos'));
+            return view('empleados.edit', compact('empleado', 'empresas'));
         } catch (Throwable $th) {
             Log::error("Error al mostra el formulario de edicion");
             Log::error($th);

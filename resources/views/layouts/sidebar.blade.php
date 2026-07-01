@@ -172,16 +172,6 @@
                 </li>
                 @endcan
 
-                {{-- Puestos --}}
-                @can('ver-puestos')
-                <li class="sidebar-item">
-                    <a href="{{ route('puestos.index') }}" class="sidebar-link">
-                        <i class="fa-solid fa-users-gear"></i>
-                        <span class="hide-menu"> Puestos </span>
-                    </a>
-                </li>
-                @endcan
-
                 {{-- Clientes --}}
                 @can('ver-clientes')
                 <li class="sidebar-item">

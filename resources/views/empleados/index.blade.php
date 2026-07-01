@@ -24,7 +24,6 @@
                     <th scope="col">Telefono</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Puesto</th>
                     <th scope="col">Empresa</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -38,7 +37,6 @@
                     <td>{{ $empleado->telefono }}</td>
                     <td>{{ $empleado->email }}</td>
                     <td>{{ $empleado->estado }}</td>
-                    <td>{{ $empleado->puesto->nombre }}</td>
                     <td>{{ $empleado->empresa->nombre }}</td>
                     <td>
                         <div class="btn-group">

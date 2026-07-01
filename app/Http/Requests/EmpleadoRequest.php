@@ -32,7 +32,6 @@ class EmpleadoRequest extends FormRequest
             'email' => 'required|email|unique:empleados,email,' . ($empleadoId ?? 'NULL'),
             'estado' => 'required|in:activo,inactivo',
             'empresa_id' => 'required|exists:empresas,id',
-            'puesto_id' => 'required|exists:puestos,id',
             'password' => $passwordRules,
             'confirmar-password' => ['required_with:password', 'same:password'],
         ];
