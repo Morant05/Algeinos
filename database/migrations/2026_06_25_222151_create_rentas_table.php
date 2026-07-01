@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('total', 10, 2);
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('usuario_id');
+            $table->json('extra');
             $table->enum('estado', ['aceptada', 'denegada','pendiente'])->default('pendiente');
             $table->timestamps();
         });

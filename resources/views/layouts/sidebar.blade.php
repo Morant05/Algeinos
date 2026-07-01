@@ -82,7 +82,7 @@
                 <li class="sidebar-item">
                     <a href="{{ route('categorias.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-pen-to-square"></i>
-                        <span class="hide-menu"> Categorías </span>
+                        <span class="hide-menu"> Categorías de maquinaria </span>
                     </a>
                 </li>
                 @endcan

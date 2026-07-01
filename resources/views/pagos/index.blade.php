@@ -1,4 +1,3 @@
-@extends('layouts.app')
 @section('content')
 <div class="container">
 
@@ -12,25 +11,14 @@
 <form method="GET" action="{{ route('pagos.index') }}" class="mb-3">
         <div class="row g-2">
             <div class="col-md-5">
-                <input type="date" name="fecha_pago" class="form-control" placeholder="Buscar por fecha"
-                    value="{{ request('fecha_pago') }}">
-            </div>
-            <div class="col-md-5">
-                <select class="form-select" name="renta_id">
-                    <option value="">Filtrar por renta</option>
-                    @foreach ($rentas as $renta)
-                        <option value="{{ $renta->id }}" {{ request('renta_id') == $renta->id ? 'selected' : '' }}>
-                            {{ $renta->id }}
-                        </option>
-                    @endforeach
-                </select>
+                <input type="text" name="referencia" class="form-control" placeholder="Buscar por referencia"
+                    value="{{ request('referencia') }}">
             </div>
             <div class="col-md-2">
                 <button class="btn btn-outline-secondary w-100" type="submit">Filtrar</button>
             </div>
         </div>
-    </form>
-
+</form>
     {{-- Formulario de búsqueda --}}
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2>Pagos</h2>
@@ -42,10 +30,11 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Renta</th>
+                    <th scope="col">ID De La Renta</th>
                     <th scope="col">Monto</th>
-                    <th scope="col">Fecha de Pago</th>
-                    <th scope="col">Método de Pago</th>
+                    <th scope="col">Fecha Del Pago</th>
+                    <th scope="col">Metodo De Pago</th>
+                    <th scope="col">Referencia</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Observaciones</th>
                     <th scope="col">Acciones</th>
@@ -59,6 +48,7 @@
                     <td>{{ $pago->monto }}</td>
                     <td>{{ $pago->fecha_pago }}</td>
                     <td>{{ $pago->metodo_pago }}</td>
+                    <td>{{ $pago->referencia }}</td>
                     <td>{{ $pago->estado }}</td>
                     <td>{{ $pago->observaciones }}</td>
                     <td>
@@ -80,7 +70,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center">No hay mantenimientos registrados</td>
+                    <td colspan="8" class="text-center">No hay pagos registrados</td>
                 </tr>
                 @endforelse
             </tbody>
@@ -89,7 +79,7 @@
 
     {{-- Paginador --}}
     <div>
-        {{ $mantenimientos->links('pagination::bootstrap-5') }}
+        {{ $pagos->links('pagination::bootstrap-5') }}
     </div>
 
 </div>

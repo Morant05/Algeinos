@@ -86,7 +86,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center">No hay mantenimientos registrados</td>
+                    <td colspan="8" class="text-center">No hay mantenimientos registrados</td>
                 </tr>
                 @endforelse
             </tbody>

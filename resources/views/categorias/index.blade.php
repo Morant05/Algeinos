@@ -59,7 +59,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center">No hay categorias registradas</td>
+                    <td colspan="4" class="text-center">No hay categorias registradas</td>
                 </tr>
                 @endforelse
             </tbody>
