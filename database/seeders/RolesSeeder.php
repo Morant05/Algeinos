@@ -91,5 +91,6 @@ class RolesSeeder extends Seeder
         $operadorMaquinaria->givePermissionTo([
             'ver-asignacion-maquinas',
         ]);
+
     }
 }

@@ -78,7 +78,7 @@
                 </li>
                 @endcan
                 {{-- Maquinaria --}}
-                @can('ver-categoria')
+                @can('ver-categorias')
                 <li class="sidebar-item">
                     <a href="{{ route('categorias.index') }}" class="sidebar-link">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -141,7 +141,7 @@
                 </li>
                 @endcan
 
-                
+
                 {{-- Empresas --}}
                 @can('ver-empresas')
                 <li class="sidebar-item">
